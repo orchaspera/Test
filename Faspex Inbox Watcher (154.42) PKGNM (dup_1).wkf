@@ -1,0 +1,177 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    name: Faspex Inbox Watcher (154.42) PKGNM (dup_1)
+    portable_id: 82ccf580-1de6-0138-fa1c-08e9fe6bebcd
+    generatedFrom: 485
+    id: 325
+    comments: "Created from revision #6 from workflow 'Faspex Inbox Watcher (154.42)
+      PKGNM'\r\n        \r\nRevision 5 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Faspex_Inbox_Watcher_15442_PKGNM_dup_1__475.wkf"
+    revision_id: 5
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-12-12 22:36:05.000000000 Z
+    updated_at: 2020-01-20 19:17:26.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Faspex Inbox Watcher (154.42) PKGNM (dup_1)|5
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="325">
+        <Start x="100" y="50" id="9fc63e76-71c0-9f92-7edb-8672fba74bfa">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="a4992059-926a-a0ab-0c02-a668fdc3b875">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="adc48f05-16ca-a0da-c3be-bfaa49fe736c">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="d95afd03-f21b-dd6f-f9d9-d86a1587f8b5" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="81519e6e-1fe5-0278-c63b-cb4a1748afa6">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="460" y="40" id="34cce76a-8644-9454-a5fe-dca2be2935ac">
+            <Action_id>6</Action_id>
+            <Step_name>New FaspexInboxWatcher Step</Step_name>
+            <Step_type>FaspexInboxWatcher</Step_type>
+            <Version>1.4.3</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="9fc63e76-71c0-9f92-7edb-8672fba74bfa" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs>
+              <Output name="Title" />
+              <Output name="Content" />
+              <Output name="Id" />
+              <Output name="Completed" />
+              <Output name="Published" />
+              <Output name="Updated" />
+              <Output name="Status" />
+              <Output name="Author_name" />
+              <Output name="Author_email" />
+              <Output name="Recipient_name" />
+              <Output name="Recipient_email" />
+              <Output name="Links" />
+              <Output name="Meta_data" />
+              <Output name="File_list" />
+              <Output name="File_to_link_map" />
+              <Output name="Recipient_list" />
+              <Output name="Package_delivery_id" />
+              <Output name="Package_location" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="790" y="40" id="d95afd03-f21b-dd6f-f9d9-d86a1587f8b5">
+            <Action_id>6</Action_id>
+            <Step_name>New WorkOrderMetaData Step</Step_name>
+            <Step_type>WorkOrderMetaData</Step_type>
+            <Version></Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="34cce76a-8644-9454-a5fe-dca2be2935ac" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Work Order Label">
+                <Map_to type="output" name="Title" step_type="FaspexInboxWatcher" action_id="6" step_name="New FaspexInboxWatcher Step" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Work Order Label Name" />
+              <Output name="work_order_id" />
+              <Output name="previous work step" />
+              <Output name="number_of_work_steps_present" />
+              <Output name="step_info" />
+              <Output name="longest_steps" />
+              <Output name="shortest_steps" />
+              <Output name="work_order_url" />
+              <Output name="tags" />
+              <Output name="master_id" />
+              <Output name="previous_work_step_information" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 485
+    workflow_id: 325
+    error_free: 1
+    created_by: 1
+    revision_id: 5
+    created_at: 2020-01-20 19:17:07.000000000 Z
+    updated_at: 2020-01-20 19:17:07.000000000 Z
+    revisions_log: 
+- FaspexInboxWatcher__6: !ruby/object:FaspexInboxWatcher
+    attributes:
+      faspex_node: ''
+      id: 6
+      name: W325__New FaspexInboxWatcher Step_1
+      comments: ''
+      server: https://10.0.154.42/aspera/faspex/
+      user: admin
+      password: Aspera123_
+      filters: ''
+      keep_ongoing: 1
+      polling_frequency: 30
+      early_trigger: 0
+      forward_address: 
+      forward_directory: 
+      created_at: 2020-01-20 19:17:07.000000000 Z
+      updated_at: 2020-01-20 19:17:07.000000000 Z
+      new_only: 0
+      run_synchronous: 
+      mailbox: inbox
+      account_url: 0
+      trigger_type: absolute
+      packages_root: ''
+      faspex_version: "< 3.5"
+      ignore_faspex_failures: 1
+      ignore_empty_metadata: 0
+  WorkOrderMetaData__6: !ruby/object:WorkOrderMetaData
+    attributes:
+      id: 6
+      name: W325__New WorkOrderMetaData Step_1
+      comments: ''
+      label: ''
+      created_at: 2020-01-20 19:17:07.000000000 Z
+      updated_at: 2020-01-20 19:17:07.000000000 Z
+      tags: ''
+      strict_label_and_tags: 0
+      show_work_order_id: 0
+      master_id: ''
+      change_lable_of_master: 0
+      append_tags: 0
+- FaspexInboxWatcher__6:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: ''
+    :dependent_field: faspex_node
+  WorkOrderMetaData__6: []
+- {}
+- FaspexInboxWatcher: 1.4.4
+  WorkOrderMetaData: 0.6.0
