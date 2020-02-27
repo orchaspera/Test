@@ -1,0 +1,50 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    name: bad-wf
+    portable_id: 5367ce70-f201-0137-fa16-08e9fe6bebcd
+    generatedFrom: 465
+    id: 322
+    comments: ''
+    revision_id: 1
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-11-25 22:32:12.000000000 Z
+    updated_at: 2019-11-25 22:32:29.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: bad-wf|1
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="322">
+      <Start x="100" y="130" id="3e7ad725-84fa-e701-07b9-8c5e795d7336">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="b4df7c81-47a3-731b-9371-81962c2ce1ac">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="f899a373-23a0-554f-020b-610540509cc6">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></End>
+      <Fail x="1200" y="200" id="8870b5da-6b15-c3ec-c4dc-39edd65db1c1">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps></Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 465
+    workflow_id: 322
+    error_free: 1
+    created_by: 1
+    revision_id: 1
+    created_at: 2019-11-25 22:32:19.000000000 Z
+    updated_at: 2019-11-25 22:32:19.000000000 Z
+    revisions_log: 
+- {}
+- {}
+- {}
+- {}
