@@ -1,0 +1,264 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    name: vantage-test  (import_1)
+    portable_id: 58bc1aa0-1f7c-0138-fa1c-08e9fe6bebcd
+    generatedFrom: 
+    id: 333
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_vantagetest__488.yml
+    revision_id: 
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-01-22 19:36:02.000000000 Z
+    updated_at: 2020-01-22 19:36:02.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: vantage-test|9
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="333">
+        <Start x="70" y="150" id="77ed775d-37c7-55d7-1515-e323caa94e16">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="8b4baca4-2f17-0308-0f26-f76cc4af3ca0">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="960" y="80" id="32a881a5-1000-8231-d7e0-ada54e5fd318">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="3d2d9771-68cc-30e3-b7b4-dc0c05360abf" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="0fb0ee52-1a99-1538-fc31-49fd93df8b02">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="420" y="140" id="dc66f5cd-6673-932c-0210-89b1e56e27d0">
+            <Action_id>7</Action_id>
+            <Step_name>New ArrayFanout Step</Step_name>
+            <Step_type>ArrayFanout</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="aa0c315d-09b0-4186-e06d-cb6c5479fb5d" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="x">
+                <Map_to type="output" name="haris" step_type="CustomRuby" action_id="122" step_name="New CustomRuby Step" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="y" />
+              <Output name="Fanout_Size" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="780" y="110" id="3d2d9771-68cc-30e3-b7b4-dc0c05360abf">
+            <Action_id>5</Action_id>
+            <Step_name>New Funnelin Step</Step_name>
+            <Step_type>Funnelin</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Version>1.0.4</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="2e781867-04ac-4c5e-4a98-6c2038bec0fb" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="x">
+                <Map_to type="output" name="Fanout_Size" step_type="ArrayFanout" action_id="7" step_name="New ArrayFanout Step" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Hash_by_state_id" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="Output_file(s)" step_type="VantageTranscoding" action_id="4" step_name="New VantageTranscoding Step" />
+              <Carry_thru type="output" name="Output_files_hash" step_type="VantageTranscoding" action_id="4" step_name="New VantageTranscoding Step" />
+            </Outputs>
+            <Post_processing></Post_processing>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="600" y="120" id="2e781867-04ac-4c5e-4a98-6c2038bec0fb">
+            <Action_id>4</Action_id>
+            <Step_name>New VantageTranscoding Step</Step_name>
+            <Step_type>VantageTranscoding</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="dc66f5cd-6673-932c-0210-89b1e56e27d0" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs>
+              <Output name="Output_file(s)" />
+              <Output name="Errors" />
+              <Output name="Job_Id" />
+              <Output name="Job_Name" />
+              <Output name="Input_file" />
+              <Output name="Vantage_Steps_Info" />
+              <Output name="Vantage_Items" />
+              <Output name="Vantage_Variables" />
+              <Output name="Vantage_workflows_hash" />
+              <Output name="Output_files_hash" />
+              <Output name="Labels" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="Fanout_Size" step_type="ArrayFanout" action_id="7" step_name="New ArrayFanout Step" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="200" y="150" id="aa0c315d-09b0-4186-e06d-cb6c5479fb5d">
+            <Action_id>122</Action_id>
+            <Step_name>New CustomRuby Step</Step_name>
+            <Step_type>CustomRuby</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="77ed775d-37c7-55d7-1515-e323caa94e16" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs>
+              <Output name="haris" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 489
+    workflow_id: 333
+    error_free: 1
+    created_by: 1
+    revision_id: 9
+    created_at: 2020-01-22 19:36:02.000000000 Z
+    updated_at: 2020-01-22 19:36:02.000000000 Z
+    revisions_log: 
+- ArrayFanout__7: !ruby/object:ArrayFanout
+    attributes:
+      id: 7
+      name: W333__New ArrayFanout Step_1
+      fanoutVariable: x
+      fannedAs: y
+      variable_type: int
+      created_at: 2020-01-22 19:36:02.000000000 Z
+      updated_at: 2020-01-22 19:36:02.000000000 Z
+      comments: ''
+      serialize: 0
+  Funnelin__5: !ruby/object:Funnelin
+    attributes:
+      id: 5
+      synch_filter: 
+      funnelVariable: x
+      funneledAs: 
+      funneledInputs: ''
+      funnelType: int
+      created_at: 2020-01-22 19:36:02.000000000 Z
+      updated_at: 2020-01-22 19:36:02.000000000 Z
+      name: W333__New Funnelin Step_1
+      return_status: 0
+      comments: ''
+      fail_if_failures: 0
+  VantageTranscoding__4: !ruby/object:VantageTranscoding
+    attributes:
+      server_node: es-node
+      id: 4
+      name: W333__New VantageTranscoding Step_1
+      comments: ''
+      server_address: ''
+      api_port: ''
+      source_file: "/"
+      workflow_id: 
+      workflow_name: ''
+      job_name: hi
+      polling_frequency: 
+      created_at: 2020-01-22 19:36:02.000000000 Z
+      updated_at: 2020-01-22 19:36:02.000000000 Z
+      wf_items: ''
+      api_method: SubmitFile
+      wf_variables: ''
+      reuse_job_id: 0
+      fail_if_cannot_restart: 0
+  CustomRuby__122: !ruby/object:CustomRuby
+    attributes:
+      id: 122
+      name: W333__New CustomRuby Step_1
+      comments: ''
+      execute_code: "@outputs['haris'] = [1,12,13,14,15]"
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-01-22 19:36:02.000000000 Z
+      updated_at: 2020-01-22 19:36:02.000000000 Z
+      mandatoryInputs: ''
+      optionalInputs: ''
+      typedOutputs: "{'haris'=>'array'}"
+      use_code_from_github: 0
+      github_token: year2000
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: admin
+      github_hostname: ''
+      verify_ssl: 1
+- ArrayFanout__7: []
+  Funnelin__5: []
+  VantageTranscoding__4:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: es-node
+    :dependent_field: server_node
+  CustomRuby__122: []
+- {}
+- ArrayFanout: 1.0.9
+  Funnelin: 1.0.4
+  VantageTranscoding: 0.8.0
+  CustomRuby: 0.5.0
