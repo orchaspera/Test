@@ -1,0 +1,449 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    name: FB
+    portable_id: 818350e0-b5e8-0137-eeb7-0800271b290f
+    generatedFrom: 424
+    id: 313
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_FB__92.yml
+    revision_id: 29
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-10-17 22:36:02.000000000 Z
+    updated_at: 2019-10-17 22:41:01.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: FB|29
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="313">
+        <Start x="100" y="50" id="46c23b10-0f88-fec3-140b-ad4479fd6e8c">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="f193bdd9-a787-b13c-e9ef-aa0e595f3f89">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="b5b7d943-642f-e220-1e18-4349ebd0e236">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="8a78a705-551f-59df-ebd9-ca3b487b9867" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="5ff748bc-cab2-e9ec-8138-1dfe40c7d21c">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="510" y="40" id="c2acef84-4255-d456-4afc-61e9a004b051">
+            <Action_id>1</Action_id>
+            <Step_name>start video upload</Step_name>
+            <Step_type>RestRequest</Step_type>
+            <Version>1.0.8</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="826f3d3f-7568-62f1-4d02-446343144559" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="page_id">
+                <Map_to type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="access_token">
+                <Map_to type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="file_size">
+                <Map_to type="output" name="file_size_in_bytes" step_type="FileInfo" action_id="1" step_name="get file size" />
+                <Processing>input_value=input_value.to_s</Processing>
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="HTTP_return_code" />
+              <Output name="Service_result" />
+              <Output name="Formatted_result" />
+              <Output name="JSON_result" />
+              <Output name="Response_header" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="file_size_in_bytes" step_type="FileInfo" action_id="1" step_name="get file size" />
+              <Carry_thru type="output" name="file" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="parent" step_type="FileInfo" action_id="1" step_name="get file size" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="950" y="40" id="8a78a705-551f-59df-ebd9-ca3b487b9867">
+            <Action_id>2</Action_id>
+            <Step_name>publish video</Step_name>
+            <Step_type>RestRequest</Step_type>
+            <Version>1.0.8</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="4f5b077e-9b62-a6fe-d001-555538062c98" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="page_id">
+                <Map_to type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="access_token">
+                <Map_to type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="upload_session_id">
+                <Map_to type="output" name="JSON_result" step_type="RestRequest" action_id="1" step_name="start video upload" />
+                <Processing>input_value=input_value[&apos;upload_session_id&apos;]</Processing>
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="HTTP_return_code" />
+              <Output name="Service_result" />
+              <Output name="Formatted_result" />
+              <Output name="JSON_result" />
+              <Output name="Response_header" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="810" y="40" id="4f5b077e-9b62-a6fe-d001-555538062c98">
+            <Action_id>108</Action_id>
+            <Step_name>upload chunks</Step_name>
+            <Step_type>CustomRuby</Step_type>
+            <Version>0.5.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="c4e996c0-3ba5-8037-89f2-2d5a1c62fede" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="access_token">
+                <Map_to type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="page_id">
+                <Map_to type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="upload_session_id">
+                <Map_to type="output" name="JSON_result" step_type="RestRequest" action_id="1" step_name="start video upload" />
+                <Processing>input_value=input_value[&apos;upload_session_id&apos;]</Processing>
+              </Input>
+              <Input name="file_size">
+                <Map_to type="output" name="file_size_in_bytes" step_type="FileInfo" action_id="1" step_name="get file size" />
+                <Processing>input_value=input_value.to_s</Processing>
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Step_information" />
+              <Output name="out" />
+              <Carry_thru type="output" name="JSON_result" step_type="RestRequest" action_id="1" step_name="start video upload" />
+              <Carry_thru type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="230" y="40" id="9092e967-5cf0-718d-2ea3-5c5b5ee5b9eb">
+            <Action_id>1</Action_id>
+            <Step_name>New MassParameterSetter Step</Step_name>
+            <Step_type>MassParameterSetter</Step_type>
+            <Version>0.5.3</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="46c23b10-0f88-fec3-140b-ad4479fd6e8c" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs>
+              <Output name="page_access_token" />
+              <Output name="page_id" />
+              <Output name="Step_information" />
+              <Output name="file" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="370" y="40" id="826f3d3f-7568-62f1-4d02-446343144559">
+            <Action_id>1</Action_id>
+            <Step_name>get file size</Step_name>
+            <Step_type>FileInfo</Step_type>
+            <Version>0.1.1</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="9092e967-5cf0-718d-2ea3-5c5b5ee5b9eb" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="File_path">
+                <Map_to type="output" name="file" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="folder?" />
+              <Output name="symlink?" />
+              <Output name="naked_name" />
+              <Output name="parent" />
+              <Output name="extension" />
+              <Output name="atime" />
+              <Output name="unix_atime" />
+              <Output name="parent_name" />
+              <Output name="mtime" />
+              <Output name="unix_mtime" />
+              <Output name="file_name" />
+              <Output name="file_size" />
+              <Output name="ctime" />
+              <Output name="unix_ctime" />
+              <Output name="exists?" />
+              <Output name="file_size_in_KB" />
+              <Output name="file_size_in_bytes" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="file" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="650" y="40" id="c4e996c0-3ba5-8037-89f2-2d5a1c62fede">
+            <Action_id>1</Action_id>
+            <Step_name>split file</Step_name>
+            <Step_type>RemoteExecution</Step_type>
+            <Version>1.1.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="c2acef84-4255-d456-4afc-61e9a004b051" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Execution_node">
+                <Map_to type="value" name="localhost" />
+              </Input>
+              <Input name="chunk">
+                <Map_to type="output" name="JSON_result" step_type="RestRequest" action_id="1" step_name="start video upload" />
+                <Processing>input_value=input_value[&apos;end_offset&apos;]</Processing>
+              </Input>
+              <Input name="file">
+                <Map_to type="output" name="file" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              </Input>
+              <Input name="folder">
+                <Map_to type="output" name="parent" step_type="FileInfo" action_id="1" step_name="get file size" />
+                <Processing>input_value=input_value%2B&quot;/&quot;</Processing>
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="exit_code" />
+              <Output name="stdio" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="file_size_in_bytes" step_type="FileInfo" action_id="1" step_name="get file size" />
+              <Carry_thru type="output" name="JSON_result" step_type="RestRequest" action_id="1" step_name="start video upload" />
+              <Carry_thru type="output" name="page_access_token" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+              <Carry_thru type="output" name="page_id" step_type="MassParameterSetter" action_id="1" step_name="New MassParameterSetter Step" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 424
+    workflow_id: 313
+    error_free: 1
+    created_by: 1
+    revision_id: 29
+    created_at: 2019-10-17 22:36:02.000000000 Z
+    updated_at: 2019-10-17 22:36:02.000000000 Z
+    revisions_log: 
+- RestRequest__1: !ruby/object:RestRequest
+    attributes:
+      id: 1
+      name: W313__start video upload_1
+      comments: ''
+      service_url: https://graph-video.facebook.com/<%=page_id%>/videos
+      rest_method: post
+      basic_auth_login: ''
+      basic_auth_password: ''
+      post_parameters: "{'access_token'=>'<%=access_token%>', 'file_size'=>'<%=file_size%>',
+        'upload_phase'=>'start'}"
+      post_body: ''
+      response_type: json
+      processed_outputs: ''
+      processed_outputs_code: ''
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-17 22:36:02.000000000 Z
+      http_form_post_mode: 1
+      header_parameters: "{}"
+      content_type: ''
+      polling_frequency: 
+      max_records: 
+      keep_ongoing: 0
+      polling_stop_condition: "        \n        \n        \n        \n        \n
+        \       \n        \n        \n        \n        \n        \n        \n        \n
+        \       \n        \n        \n        \n        \n        \n        \n        \n
+        \       \n        \n        "
+      record_identification_code: ''
+      records_extracting_code: ''
+      record_formatting_code: ''
+      proxy_address: ''
+      save_to_file: 0
+      response_file_path: ''
+      ssl_verification: 0
+      ssl_client_cert_path: ''
+      ssl_client_key_path: ''
+      client_key_passphrase: ''
+      ssl_ca_file_path: ''
+      request_timeout: 
+      return_code_for_network_failure: 
+      read_post_body_from_file: 0
+      post_body_file_path: ''
+  RestRequest__2: !ruby/object:RestRequest
+    attributes:
+      id: 2
+      name: W313__publish video
+      comments: ''
+      service_url: https://graph-video.facebook.com/<%=page_id%>/videos
+      rest_method: post
+      basic_auth_login: ''
+      basic_auth_password: ''
+      post_parameters: "{'access_token'=>'<%=access_token%>', 'upload_phase'=>'finish',
+        'upload_session_id'=>'<%=upload_session_id%>'}"
+      post_body: ''
+      response_type: json
+      processed_outputs: ''
+      processed_outputs_code: ''
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-31 21:51:26.000000000 Z
+      http_form_post_mode: 1
+      header_parameters: ''
+      content_type: ''
+      polling_frequency: 
+      max_records: 
+      keep_ongoing: 0
+      polling_stop_condition: "        \n        \n        \n        \n        \n
+        \       \n        \n        \n        \n        \n        \n        \n        \n
+        \       \n        \n        "
+      record_identification_code: ''
+      records_extracting_code: ''
+      record_formatting_code: ''
+      proxy_address: ''
+      save_to_file: 0
+      response_file_path: ''
+      ssl_verification: 0
+      ssl_client_cert_path: ''
+      ssl_client_key_path: ''
+      client_key_passphrase: ''
+      ssl_ca_file_path: ''
+      request_timeout: 
+      return_code_for_network_failure: 
+      read_post_body_from_file: 0
+      post_body_file_path: ''
+  CustomRuby__108: !ruby/object:CustomRuby
+    attributes:
+      id: 108
+      name: W313__upload chunks
+      comments: ''
+      execute_code: |-
+        x = "0"
+        y = 1
+        #transfer is also accepted when all file (no chunk) is sent with start_offset = 0 (but there are some limitations)
+        until x == inputs['file_size'] do
+        url = "https://graph-video.facebook.com/" + inputs['page_id'] + "/videos?" + "access_token=" + inputs['access_token'] + "&start_offset=" + x + "&upload_phase=transfer&upload_session_id=" + inputs['upload_session_id']
+        resource = {:method => :post,  :url => url, :headers => {:content_type => "multipart/form-data"}, :payload => {:video_file_chunk => File.new('/tmp/TEST/' + y.to_s, 'rb')}}
+        resource[:verify_ssl] = false
+        request = RestClient::Request.new(resource)
+        result = request.execute
+        json = JSON::parse(result)
+        debug json
+        x = json['start_offset']
+        y = y + 1
+        end
+        outputs['out'] = json
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-17 22:36:02.000000000 Z
+      mandatoryInputs: "{'page_id'=>'string', 'access_token'=>'string', 'upload_session_id'=>'string',
+        'file_size'=>'string'}"
+      optionalInputs: ''
+      typedOutputs: "{'out'=>'hash'}"
+      use_code_from_github: 0
+      github_token: ''
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: ''
+      verify_ssl: 1
+  MassParameterSetter__1: !ruby/object:MassParameterSetter
+    attributes:
+      use_external_storage: 0
+      id: 1
+      name: W313__New MassParameterSetter Step
+      comments: ''
+      parameters: "{'page_access_token'=>['','string'], 'page_id'=>['','string'],
+        'file'=>['/tmp/TEST/video.mp4','string']}"
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-17 22:36:02.000000000 Z
+      config_name: ''
+  FileInfo__1: !ruby/object:FileInfo
+    attributes:
+      id: 1
+      name: W313__get file size_1
+      comments: ''
+      file_path: ''
+      fail_if_not_exists: 1
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-17 22:36:02.000000000 Z
+      array_mode: 0
+  RemoteExecution__1: !ruby/object:RemoteExecution
+    attributes:
+      execution_node: ''
+      id: 1
+      name: W313__split file
+      comments: ''
+      command: split -b<%=chunk%> --numeric-suffixes=1 --suffix-length=1 <%=file%>
+        <%=folder%>
+      multiLine: 0
+      mandatoryInputs: ''
+      optionalInputs: ''
+      execution_login: ''
+      execution_password: ''
+      created_at: 2019-10-17 22:36:02.000000000 Z
+      updated_at: 2019-10-17 22:36:02.000000000 Z
+      script_timeout: 
+      report_stdio: 
+      report_stderr: 
+      formatted_outputs: ''
+      formatted_outputs_processing_code: ''
+      execution_server_address: ''
+      use_server_address: 0
+      should_cancel: 0
+      return_stdio: 0
+      keepalive: 1
+- RestRequest__1: []
+  RestRequest__2: []
+  CustomRuby__108: []
+  MassParameterSetter__1: []
+  FileInfo__1: []
+  RemoteExecution__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: ''
+    :dependent_field: execution_node
+- {}
+- RestRequest: 1.0.9
+  CustomRuby: 0.5.0
+  MassParameterSetter: 0.5.4
+  FileInfo: 0.1.1
+  RemoteExecution: 1.1.0
