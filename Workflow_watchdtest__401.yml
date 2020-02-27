@@ -1,0 +1,84 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 299
+    portable_id: 3ee85670-c2e0-0137-f9fe-08e9fe6bebcd
+    generatedFrom: 401
+    name: watchd-test
+    comments: ''
+    revision_id: 4
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-09-26 23:06:58.000000000 Z
+    updated_at: 2019-09-30 18:27:24.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: watchd-test|4
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="299">
+      <Start x="100" y="50" id="0f59171f-b4fb-3f52-0ff9-77987f399687">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="39699d14-2add-50a0-3a1c-cda5024aaaa5">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="590" y="70" id="5a3218be-cb4a-e668-6484-52b3d54a12c7">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='4f6f8a18-30ef-c712-38ca-2972498a673c' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="0224d0af-63aa-8220-4445-261b2b9e1016">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="480" y="120" id="4f6f8a18-30ef-c712-38ca-2972498a673c">
+      <Action_id>1</Action_id><Step_name>New AsperaNodeFileWatcher Step</Step_name><Step_type>AsperaNodeFileWatcher</Step_type><Version>0.5.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='0f59171f-b4fb-3f52-0ff9-77987f399687' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='File_list'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 401
+    workflow_id: 299
+    error_free: 1
+    created_by: 1
+    revision_id: 4
+    created_at: 2019-09-30 18:27:23.000000000 Z
+    updated_at: 2019-09-30 18:27:23.000000000 Z
+    revisions_log: 
+- AsperaNodeFileWatcher__1: !ruby/object:AsperaNodeFileWatcher
+    attributes:
+      remote_node: es-node
+      id: 1
+      name: W299__New AsperaNodeFileWatcher Step
+      comments: ''
+      watch_directory: "/home/vagrant/test_files"
+      file_pattern: file
+      server_address: 10.0.206.157
+      node_api_port: 
+      node_user_name: node
+      node_password: vagrant
+      use_ssl: 0
+      depth_max: ''
+      ignore_folders: 0
+      polling_frequency: 
+      check_once: 0
+      keep_ongoing: 0
+      return_single: 0
+      trigger_on_partial: 0
+      trigger_type: none
+      created_at: 2019-09-27 00:03:32.000000000 Z
+      updated_at: 2019-09-30 18:27:20.000000000 Z
+      rest_timeout: 
+      exclusions: ''
+      ignore_zero_bytes: 0
+      aggressive_pruning: 0
+      beacon_file_path: ''
+      return_only_folder: 0
+- AsperaNodeFileWatcher__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: es-node
+    :dependent_field: remote_node
+- {}
+- AsperaNodeFileWatcher: 0.5.0
