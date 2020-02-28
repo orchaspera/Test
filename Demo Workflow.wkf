@@ -1,21 +1,21 @@
 ---
 - !ruby/object:Workflow
   attributes:
+    id: 338
     name: Demo Workflow
     portable_id: 9d9926b0-9a35-0137-14d1-2a0068596101
-    generatedFrom: 806
-    id: 338
+    generatedFrom: 870
     comments: "Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       4 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       5 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       6 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       12 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
       (4).wkf"
-    revision_id: 12
+    revision_id: 13
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-01-28 22:36:42.000000000 Z
-    updated_at: 2020-02-27 23:34:32.000000000 Z
+    updated_at: 2020-02-28 01:03:16.000000000 Z
     folder_id: 0
     description: ''
     max_running: 
@@ -23,141 +23,39 @@
     cleanup_after_days: 
     tags: 
     label: 
-    source_revision: Demo Workflow|12
+    source_revision: Demo Workflow|13
     templates: 
     user_lock: 
     locked_by: 
 - !ruby/object:Whiteboard
   attributes:
     xml_export: |
-      <opt id="338">
-        <Start x="100" y="50" id="fb93e601-4e86-9537-723c-8135fe608e40">
-          <Synch_factor>0</Synch_factor>
-          <Prerequisites></Prerequisites>
-          <Parameters></Parameters>
-        </Start>
-        <Error x="1200" y="350" id="ef139589-cd58-a9ba-a1e1-9206eae06f11">
-          <Synch_factor>0</Synch_factor>
-          <Prerequisites></Prerequisites>
-        </Error>
-        <End x="1200" y="50" id="bb5fe064-ea06-344c-5320-3b4fd3b42c35">
-          <Synch_factor>0</Synch_factor>
-          <Prerequisites>
-            <Prerequisite id="a9ca2525-6dcf-7258-c845-e0aca7eda382" status="Complete" router="draw2d.ManhattanConnectionRouter" />
-          </Prerequisites>
-        </End>
-        <Fail x="1200" y="200" id="b9f16aec-eae3-57fc-a6f3-9767adfd2503">
-          <Synch_factor>0</Synch_factor>
-          <Prerequisites></Prerequisites>
-        </Fail>
-        <Steps>
-          <Step x="260" y="40" id="bff8bb20-71a6-fcd0-347c-bac6d067da7f">
-            <Action_id>126</Action_id>
-            <Step_name>Watcher</Step_name>
-            <Step_type>LocalFileWatcher</Step_type>
-            <Error_attempts>1</Error_attempts>
-            <Error_retryFor>0</Error_retryFor>
-            <Error_retryForUnit>1</Error_retryForUnit>
-            <Error_retryDelay>0</Error_retryDelay>
-            <Failed_attempts>1</Failed_attempts>
-            <Failed_retryFor>0</Failed_retryFor>
-            <Failed_retryForUnit>1</Failed_retryForUnit>
-            <Failed_retryDelay>0</Failed_retryDelay>
-            <Synch_factor>0</Synch_factor>
-            <Prerequisites>
-              <Prerequisite id="fb93e601-4e86-9537-723c-8135fe608e40" status="true" router="draw2d.ManhattanConnectionRouter" />
-            </Prerequisites>
-            <Parameters></Parameters>
-            <Inputs></Inputs>
-            <Outputs></Outputs>
-            <comments>{}</comments>
-            <weight>0</weight>
-          </Step>
-          <Step x="470" y="40" id="418dcbb8-0b67-54a7-c5fa-40a700dadc6d">
-            <Action_id>48</Action_id>
-            <Step_name>Extract Metadata</Step_name>
-            <Step_type>CustomRuby</Step_type>
-            <Error_attempts>1</Error_attempts>
-            <Error_retryFor>0</Error_retryFor>
-            <Error_retryForUnit>1</Error_retryForUnit>
-            <Error_retryDelay>0</Error_retryDelay>
-            <Failed_attempts>1</Failed_attempts>
-            <Failed_retryFor>0</Failed_retryFor>
-            <Failed_retryForUnit>1</Failed_retryForUnit>
-            <Failed_retryDelay>0</Failed_retryDelay>
-            <Synch_factor>0</Synch_factor>
-            <Prerequisites>
-              <Prerequisite id="bff8bb20-71a6-fcd0-347c-bac6d067da7f" status="Complete" router="draw2d.ManhattanConnectionRouter" />
-            </Prerequisites>
-            <Parameters></Parameters>
-            <Inputs>
-              <Input name="folder">
-                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="126" step_name="Watcher" />
-              </Input>
-              <Input name="pattern">
-                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="126" step_name="Watcher" />
-              </Input>
-            </Inputs>
-            <Outputs></Outputs>
-            <comments>{}</comments>
-            <weight>0</weight>
-          </Step>
-          <Step x="690" y="40" id="b6258fbe-d81b-90ea-92cc-8f94df4591e2">
-            <Action_id>422</Action_id>
-            <Step_name>Sub-Workflow</Step_name>
-            <Step_type>SubWorkflow</Step_type>
-            <Error_attempts>1</Error_attempts>
-            <Error_retryFor>0</Error_retryFor>
-            <Error_retryForUnit>1</Error_retryForUnit>
-            <Error_retryDelay>0</Error_retryDelay>
-            <Failed_attempts>1</Failed_attempts>
-            <Failed_retryFor>0</Failed_retryFor>
-            <Failed_retryForUnit>1</Failed_retryForUnit>
-            <Failed_retryDelay>0</Failed_retryDelay>
-            <Version>1.4.1</Version>
-            <Synch_factor>0</Synch_factor>
-            <Prerequisites>
-              <Prerequisite id="418dcbb8-0b67-54a7-c5fa-40a700dadc6d" status="Complete" router="draw2d.ManhattanConnectionRouter" />
-            </Prerequisites>
-            <Parameters></Parameters>
-            <Inputs></Inputs>
-            <Outputs></Outputs>
-            <comments>{}</comments>
-            <weight>0</weight>
-          </Step>
-          <Step x="910" y="40" id="a9ca2525-6dcf-7258-c845-e0aca7eda382">
-            <Action_id>127</Action_id>
-            <Step_name>FASP Transfer</Step_name>
-            <Step_type>FaspTransfer</Step_type>
-            <Error_attempts>1</Error_attempts>
-            <Error_retryFor>0</Error_retryFor>
-            <Error_retryForUnit>1</Error_retryForUnit>
-            <Error_retryDelay>0</Error_retryDelay>
-            <Failed_attempts>1</Failed_attempts>
-            <Failed_retryFor>0</Failed_retryFor>
-            <Failed_retryForUnit>1</Failed_retryForUnit>
-            <Failed_retryDelay>0</Failed_retryDelay>
-            <Synch_factor>0</Synch_factor>
-            <Prerequisites>
-              <Prerequisite id="b6258fbe-d81b-90ea-92cc-8f94df4591e2" status="Complete" router="draw2d.ManhattanConnectionRouter" />
-            </Prerequisites>
-            <Parameters></Parameters>
-            <Inputs></Inputs>
-            <Outputs></Outputs>
-            <comments>{}</comments>
-            <weight>0</weight>
-          </Step>
-        </Steps>
-        <Parameters></Parameters>
-        <Notes></Notes>
-      </opt>
-    id: 806
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="338">
+      <Start x="100" y="50" id="73477284-0c67-2be6-bd79-f76ade3bdd8a">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="58a63b9f-c4f4-81c6-71a3-68947552ded8">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="43e0bc28-70fa-61e7-e056-7c166978adb4">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='01d7bad5-0b92-8b62-c25d-7c896a0b6966' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="afa92922-6dac-5ab9-fbfd-432652d49d2c">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="260" y="40" id="59e45dea-cc29-46f9-0308-e909935d5a5b">
+      <Action_id>126</Action_id><Step_name>Watcher</Step_name><Step_type>LocalFileWatcher</Step_type><Version></Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='73477284-0c67-2be6-bd79-f76ade3bdd8a' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='FileName'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="470" y="40" id="104bcb6b-b5b9-02e3-fb22-264225337442">
+      <Action_id>48</Action_id><Step_name>Extract Metadata</Step_name><Step_type>CustomRuby</Step_type><Version>0.5.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='59e45dea-cc29-46f9-0308-e909935d5a5b' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='folder'><Map_to type='output' name='FileName' step_type='LocalFileWatcher' action_id='126' step_name='Watcher' /></Input><Input name='pattern'><Map_to type='output' name='FileName' step_type='LocalFileWatcher' action_id='126' step_name='Watcher' /></Input></Inputs><Outputs><Output name='files'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="690" y="40" id="cde9614d-3ed4-cf84-cfb7-66c000107339">
+      <Action_id>422</Action_id><Step_name>Sub-Workflow</Step_name><Step_type>SubWorkflow</Step_type><Version>1.4.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='104bcb6b-b5b9-02e3-fb22-264225337442' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='Sub-Workflow_workorder_ID'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="910" y="40" id="01d7bad5-0b92-8b62-c25d-7c896a0b6966">
+      <Action_id>127</Action_id><Step_name>FASP Transfer</Step_name><Step_type>FaspTransfer</Step_type><Version></Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='cde9614d-3ed4-cf84-cfb7-66c000107339' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='Job_ID'></Output><Output name='Transfer_Stats'></Output><Output name='Transferred_File_list'></Output><Output name='Failed_Files_list'></Output><Output name='Transferred_Files_md5'></Output><Output name='Error_Code'></Output><Output name='Error_Message'></Output><Output name='Average Bandwidth (bps)'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 870
     workflow_id: 338
     error_free: 1
     created_by: 1
-    revision_id: 12
-    created_at: 2020-02-26 23:58:04.000000000 Z
-    updated_at: 2020-02-26 23:58:04.000000000 Z
+    revision_id: 13
+    created_at: 2020-02-28 01:03:14.000000000 Z
+    updated_at: 2020-02-28 01:03:14.000000000 Z
     revisions_log: 
 - LocalFileWatcher__126: !ruby/object:LocalFileWatcher
     attributes:
@@ -194,7 +92,7 @@
     attributes:
       id: 48
       name: Search Files
-      comments: Pattern files under specified directory hey modifying comment
+      comments: Pattern files under specified directory hey modifying comment HEY
       execute_code: |-
         folder = @inputs['folder']
         pattern = @inputs['pattern']
@@ -214,7 +112,7 @@
       outputsSpec_code: ''
       inputsSpec_code: ''
       created_at: 2019-08-27 22:04:07.000000000 Z
-      updated_at: 2020-02-27 23:09:18.000000000 Z
+      updated_at: 2020-02-28 01:03:10.000000000 Z
       mandatoryInputs: "{'folder'=>'string', 'pattern'=>'string'}"
       optionalInputs: ''
       typedOutputs: "{'files'=>'array'}"
