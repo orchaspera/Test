@@ -1,0 +1,109 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    name: Success/Fail/Error
+    portable_id: f10d8ee0-393b-0137-1463-2a0068596101
+    generatedFrom: 2
+    id: 1
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_SuccessFailError__3406.yml
+    revision_id: 3
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-04-08 21:40:12.000000000 Z
+    updated_at: 2019-04-08 21:40:48.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Success/Fail/Error|3
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="1">
+      <Start x="100" y="50" id="965c97bb-9a9e-a7d0-3351-662757b3b12c">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="d37acbf7-4a03-3d95-f41e-6d2d9ea065fa">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="9984ea0b-1fa4-5cb1-74c6-ce78d67d90af">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='d8367bbf-2a3a-bd4e-5113-c09e208a2f26' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="f6fe06df-c2d5-d137-5a39-4bd75ce164d4">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="430" y="40" id="1f43cfe3-d934-a4aa-63f6-57318f4582b7">
+      <Action_id>2</Action_id><Step_name>New CustomRuby Step</Step_name><Step_type>CustomRuby</Step_type><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>1</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>1</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='61bbda07-defe-56ec-3cf7-3eab0068cdfb' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='x'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="630" y="40" id="d8367bbf-2a3a-bd4e-5113-c09e208a2f26">
+      <Action_id>2</Action_id><Step_name>New Filter Step</Step_name><Step_type>Filter</Step_type><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>1</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>1</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='1f43cfe3-d934-a4aa-63f6-57318f4582b7' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='invalue'><Map_to type='output' name='x' step_type='CustomRuby' action_id='2' step_name='New CustomRuby Step' /></Input></Inputs><Outputs><Output name='FilterResult'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="240" y="40" id="61bbda07-defe-56ec-3cf7-3eab0068cdfb">
+      <Action_id>1</Action_id><Step_name>New ScheduleTrigger Step</Step_name><Step_type>ScheduleTrigger</Step_type><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>1</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>1</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='965c97bb-9a9e-a7d0-3351-662757b3b12c' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='trigger_time'></Output><Output name='scheduled_trigger_time'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 2
+    workflow_id: 1
+    error_free: 1
+    created_by: 1
+    revision_id: 3
+    created_at: 2019-04-08 21:40:48.000000000 Z
+    updated_at: 2019-04-08 21:40:48.000000000 Z
+    revisions_log: 
+- CustomRuby__2: !ruby/object:CustomRuby
+    attributes:
+      id: 2
+      name: W1__New CustomRuby Step
+      comments: ''
+      execute_code: "@outputs['x'] = rand 3\n"
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2019-04-08 21:40:12.000000000 Z
+      updated_at: 2019-04-08 21:40:12.000000000 Z
+      mandatoryInputs: ''
+      optionalInputs: ''
+      typedOutputs: "{'x'=>'int'}"
+      use_code_from_github: 0
+      github_token: Snicket13!
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: admin
+      github_hostname: ''
+      verify_ssl: 1
+  Filter__2: !ruby/object:Filter
+    attributes:
+      id: 2
+      name: W1__New Filter Step
+      comments: ''
+      command: |-
+        x = inputs['invalue']
+        return true if x == 0
+        return false if x == 1
+        x.to_h #force an error
+      mandatoryInputs: "{'invalue'=>'int'}"
+      optionalInputs: ''
+      created_at: 2019-04-08 21:40:12.000000000 Z
+      updated_at: 2019-04-08 21:40:12.000000000 Z
+      filterOutputs: ''
+  ScheduleTrigger__1: !ruby/object:ScheduleTrigger
+    attributes:
+      id: 1
+      name: W1__New ScheduleTrigger Step
+      comments: ''
+      allow_multiple: 1
+      schedule_rules: 15___sec
+      created_at: 2019-04-08 21:40:12.000000000 Z
+      updated_at: 2019-04-08 21:40:12.000000000 Z
+      calendar_mode: 
+      trigger_start: 
+      trigger_end: 
+      calculate_only: 0
+- CustomRuby__2: []
+  Filter__2: []
+  ScheduleTrigger__1: []
+- {}
+- CustomRuby: 0.5.0
+  Filter: 0.2.8
+  ScheduleTrigger: 1.1.7

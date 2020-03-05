@@ -1,0 +1,96 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 339
+    name: plugin-test
+    portable_id: 3c9f1270-a66a-0137-f9ed-08e9fe6bebcd
+    generatedFrom: 
+    comments: Imported from file /Users/anushasyed/Downloads/Workflow_plugintest__263.yml
+    revision_id: 
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-01-28 22:49:51.000000000 Z
+    updated_at: 2020-01-28 22:49:51.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: plugin-test|2
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="339">
+        <Start x="100" y="50" id="c8be85f2-4f3f-0520-0155-9ac7e4027e8b">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="0420371c-43c6-09dd-94be-5a68f9e7e24d">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="a4a410a0-d0d4-b5c4-bbcb-01681614f767">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="7ff31db1-7fbd-6738-160b-5e26dfc4b08d" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="3dfaf2bc-82c4-5f42-16c5-d16ad3b20ada">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="370" y="90" id="7ff31db1-7fbd-6738-160b-5e26dfc4b08d">
+            <Action_id>8</Action_id>
+            <Step_name>New AtemeTranscoding Step</Step_name>
+            <Step_type>AtemeTranscoding</Step_type>
+            <Version>0.0.2</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="c8be85f2-4f3f-0520-0155-9ac7e4027e8b" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs></Outputs>
+            <comments></comments>
+            <weight>undefined</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 497
+    workflow_id: 339
+    error_free: 1
+    created_by: 1
+    revision_id: 2
+    created_at: 2020-01-28 22:49:51.000000000 Z
+    updated_at: 2020-01-28 22:49:51.000000000 Z
+    revisions_log: 
+- AtemeTranscoding__8: !ruby/object:AtemeTranscoding
+    attributes:
+      remote_node: ''
+      id: 8
+      name: W339__New AtemeTranscoding Step
+      comments: ''
+      server_address: ateme.enterprise.com
+      polling_frequency: 
+      preset_name: 
+      source: "/"
+      destination: "/"
+      transcoding_payload: ''
+      created_at: 2020-01-28 22:49:51.000000000 Z
+      updated_at: 2020-01-28 22:49:51.000000000 Z
+- AtemeTranscoding__8:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: ''
+    :dependent_field: remote_node
+- {}
+- AtemeTranscoding: 0.0.2

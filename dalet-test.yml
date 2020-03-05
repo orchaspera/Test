@@ -1,0 +1,61 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 318
+    name: dalet-test
+    portable_id: bb1233f0-e3ec-0137-fa14-08e9fe6bebcd
+    generatedFrom: 464
+    comments: ''
+    revision_id: 3
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-11-08 00:29:27.000000000 Z
+    updated_at: 2019-11-25 22:30:54.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: dalet-test|3
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="318">
+      <Start x="100" y="110" id="5b1120d9-e2e6-1e92-1f61-a65cc93520ac">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="4cf0ace1-e24d-1978-8b4a-17ae183a1c36">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="770" y="180" id="57ebbf66-ba6c-9fed-6b7c-50af1f772d79">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='705dcf60-f56a-86b3-ff51-9b573447163a' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="b3467a4d-6af3-2419-4e5c-9e88c05ab78e">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="310" y="180" id="705dcf60-f56a-86b3-ff51-9b573447163a">
+      <Action_id>4</Action_id><Step_name>New FileInfo Step</Step_name><Step_type>FileInfo</Step_type><Version>0.1.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='5b1120d9-e2e6-1e92-1f61-a65cc93520ac' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='folder?'></Output><Output name='symlink?'></Output><Output name='naked_name'></Output><Output name='parent'></Output><Output name='extension'></Output><Output name='atime'></Output><Output name='unix_atime'></Output><Output name='parent_name'></Output><Output name='mtime'></Output><Output name='unix_mtime'></Output><Output name='file_name'></Output><Output name='file_size'></Output><Output name='ctime'></Output><Output name='unix_ctime'></Output><Output name='exists?'></Output><Output name='file_size_in_KB'></Output><Output name='file_size_in_bytes'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 464
+    workflow_id: 318
+    error_free: 1
+    created_by: 1
+    revision_id: 3
+    created_at: 2019-11-25 22:30:36.000000000 Z
+    updated_at: 2019-11-25 22:30:36.000000000 Z
+    revisions_log: 
+- FileInfo__4: !ruby/object:FileInfo
+    attributes:
+      id: 4
+      name: W318__New FileInfo Step
+      comments: ''
+      file_path: "/tmp/Usercerts1.txt"
+      fail_if_not_exists: 0
+      created_at: 2019-11-25 22:30:18.000000000 Z
+      updated_at: 2019-11-25 22:30:35.000000000 Z
+      array_mode: 0
+- FileInfo__4: []
+- {}
+- FileInfo: 0.1.1

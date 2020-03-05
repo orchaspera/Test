@@ -1,0 +1,76 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 1575
+    name: TEST
+    portable_id: c08f0bb0-8bca-0137-14bc-2a0068596101
+    generatedFrom: 3598
+    comments: ''
+    revision_id: 1
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-07-18 20:44:26.000000000 Z
+    updated_at: 2019-07-18 20:44:54.000000000 Z
+    folder_id: 198
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: TEST|1
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="1575">
+      <Start x="100" y="50" id="5a4e8da2-58d7-8d63-7497-e7de1798a7f5">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters><Parameter id='ff93606d-8526-937b-6504-247c4f4a515c' router='draw2d.ManhattanConnectionRouter' /></Parameters></Start>
+      <Error x="1200" y="350" id="343fb91b-4d30-3b4c-8921-edd6c2946b3b">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="b10cf270-89ce-b41f-9216-6804f532fedb">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='ef2d0460-4a60-8c69-6bb8-993d85461ae8' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="a3c18529-0ef7-a6cb-b866-974caaa5301f">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="506" y="106" id="ef2d0460-4a60-8c69-6bb8-993d85461ae8">
+      <Action_id>339</Action_id><Step_name>New CustomRuby Step</Step_name><Step_type>CustomRuby</Step_type><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='5a4e8da2-58d7-8d63-7497-e7de1798a7f5' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs></Outputs><comments></comments><weight>undefined</weight></Step>
+      </Steps><Parameters><Parameter x="68" y="203" id="ff93606d-8526-937b-6504-247c4f4a515c">
+      <Value>SKDMLS</Value><Value_type>string</Value_type><Name>New Parameter</Name><Comments></Comments></Parameter>
+      </Parameters><Notes></Notes></Workflow>
+    id: 3598
+    workflow_id: 1575
+    error_free: 1
+    created_by: 1
+    revision_id: 1
+    created_at: 2019-07-18 20:44:52.000000000 Z
+    updated_at: 2019-07-18 20:44:52.000000000 Z
+    revisions_log: 
+- CustomRuby__339: !ruby/object:CustomRuby
+    attributes:
+      id: 339
+      name: Sleep
+      comments: This step just waits a half second then completes. Nothing else
+      execute_code: sleep 0.5
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2019-04-18 18:20:20.000000000 Z
+      updated_at: 2019-04-18 18:20:49.000000000 Z
+      github_hostname: ''
+      verify_ssl: 1
+      mandatoryInputs: ''
+      optionalInputs: ''
+      typedOutputs: ''
+      use_code_from_github: 0
+      github_token: ''
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      use_cached: 0
+- CustomRuby__339: []
+- {}
+- CustomRuby: 0.6.0
