@@ -1,0 +1,188 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 316
+    name: Workflow_Demo_Workflow__3630
+    portable_id: 930fa3a0-d65f-0137-fa0b-08e9fe6bebcd
+    generatedFrom: 872
+    comments: "\r\nRevision 4 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (4).wkf\r\nRevision 5 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (4).wkf\r\nRevision 6 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (4).wkf\r\nRevision 7 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (4).wkf\r\nRevision 12 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (4).wkf\r\nRevision 93 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630
+      (1).wkf\r\nRevision 94 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Workflow_Demo_Workflow__3630__861.yml\r\nRevision
+      95 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf"
+    revision_id: 100
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2019-10-21 18:36:20.000000000 Z
+    updated_at: 2020-02-28 19:57:34.000000000 Z
+    folder_id: 
+    description: hi
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Workflow_Demo_Workflow__3630|100
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="316">
+      <Start x="100" y="50" id="1b097edc-6dc1-6f63-25e1-81cdc2f9a749">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="33798def-6259-a185-45e7-10f78053c6ad">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="60c54a95-c84c-a14d-14f5-5b6c54b4245a">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='fb9e678c-910e-4b68-f8bf-e6cba2d3f966' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="daac8a3e-363d-c351-2ade-6f4464ed8d91">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="260" y="40" id="d6d33520-8846-98d3-75b7-023babc7bf34">
+      <Action_id>147</Action_id><Step_name>Watcher</Step_name><Step_type>LocalFileWatcher</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='1b097edc-6dc1-6f63-25e1-81cdc2f9a749' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='FileName'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="470" y="40" id="bd28b2d4-d7b9-e368-ccad-00830869a05f">
+      <Action_id>48</Action_id><Step_name>Extract Metadata</Step_name><Step_type>CustomRuby</Step_type><Version>0.5.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='d6d33520-8846-98d3-75b7-023babc7bf34' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='folder'><Map_to type='output' name='FileName' step_type='LocalFileWatcher' action_id='147' step_name='Watcher' /></Input><Input name='pattern'><Map_to type='output' name='FileName' step_type='LocalFileWatcher' action_id='147' step_name='Watcher' /></Input></Inputs><Outputs><Output name='files'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="690" y="40" id="bf0c605b-bf65-fb6e-954b-c0a3448f0267">
+      <Action_id>461</Action_id><Step_name>Sub-Workflow</Step_name><Step_type>SubWorkflow</Step_type><Version>1.4.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='bd28b2d4-d7b9-e368-ccad-00830869a05f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='Sub-Workflow_workorder_ID'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="910" y="40" id="fb9e678c-910e-4b68-f8bf-e6cba2d3f966">
+      <Action_id>148</Action_id><Step_name>FASP Transfer</Step_name><Step_type>FaspTransfer</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='bf0c605b-bf65-fb6e-954b-c0a3448f0267' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='Job_ID'></Output><Output name='Transfer_Stats'></Output><Output name='Transferred_File_list'></Output><Output name='Failed_Files_list'></Output><Output name='Transferred_Files_md5'></Output><Output name='Error_Code'></Output><Output name='Error_Message'></Output><Output name='Average Bandwidth (bps)'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 872
+    workflow_id: 316
+    error_free: 1
+    created_by: 1
+    revision_id: 100
+    created_at: 2020-02-28 19:57:32.000000000 Z
+    updated_at: 2020-02-28 19:57:32.000000000 Z
+    revisions_log: 
+- LocalFileWatcher__147: !ruby/object:LocalFileWatcher
+    attributes:
+      id: 147
+      name: W316__Watcher_93
+      directory: "/doesnotexist"
+      fileName: "*.*"
+      baseDir: ''
+      use_regex_matching: 0
+      allowMultiple: 0
+      removeFile: 0
+      archiveDirectory: ''
+      archiveWithTimestamp: 0
+      readFile: 0
+      tempo: 
+      partial_file: 0
+      return_all: 0
+      run_synchronous: 
+      created_at: 2020-02-27 22:37:30.000000000 Z
+      updated_at: 2020-02-27 22:37:30.000000000 Z
+      trigger_type: ''
+      polling_frequency: 
+      comments: Watch for '' in 'nil'
+      ignore_zero_bytes: 0
+      exclusions: ''
+      fullpath_exclusions: ''
+      ignore_readlocked: 0
+      multi_folders: 0
+      cool_off: 
+      aggressive_pruning: 0
+      pruning_beacon_file_path: ''
+      keep_timestamps: 0
+  CustomRuby__48: !ruby/object:CustomRuby
+    attributes:
+      id: 48
+      name: Search Files
+      comments: Pattern files under specified directory hey modifying comment HEY
+        modifying this workflow!!!!
+      execute_code: |-
+        folder = @inputs['folder']
+        pattern = @inputs['pattern']
+        if pattern.nil?
+            @status = STATUS_ERROR
+            @status_details = "pattern is not specified, skip the step"
+        else
+            @outputs['files'] = []
+            candidates = Dir.glob(File.join(folder,"**/*"))
+            candidates.each do |candidate|
+              @outputs['files']  << candidate if candidate.match(Regexp.new(pattern)) != nil
+            end
+            @status = STATUS_COMPLETE
+            @status_details = "Found #{outputs['files'].size} files in folders matching pattern #{pattern} beneath #{folder}"
+        end
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2019-08-27 22:04:07.000000000 Z
+      updated_at: 2020-02-28 19:57:28.000000000 Z
+      mandatoryInputs: "{'folder'=>'string', 'pattern'=>'string'}"
+      optionalInputs: ''
+      typedOutputs: "{'files'=>'array'}"
+      use_code_from_github: 0
+      github_token: ''
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: ''
+      verify_ssl: 0
+  SubWorkflow__461: !ruby/object:SubWorkflow
+    attributes:
+      workflow_id: 337
+      workflow_portable_id: 78cde170-9a36-0137-14d1-2a0068596101
+      id: 461
+      workflowOutputs: ''
+      workflowInputs: ''
+      comments: ''
+      created_at: 2020-02-27 22:37:30.000000000 Z
+      updated_at: 2020-02-27 22:37:30.000000000 Z
+      name: W316__Sub-Workflow_92
+      exit_status_for_errors: Failed
+      use_true_name: 0
+      use_workorder_status: 0
+      execution_priority: 
+  FaspTransfer__148: !ruby/object:FaspTransfer
+    attributes:
+      central_node: node_4_new_20181130153647
+      id: 148
+      name: W316__FASP Transfer_94
+      comments: ''
+      payload: ''
+      payload_file: fasp_generic.xml.erb
+      saved_inputs: "{'RemoteAddress'=>'0.0.0.0', 'RemoteUserName'=>'user', 'Password_or_KeyPath'=>'abc',
+        'Sources_list'=>'abc', 'Target'=>'def'}"
+      central_address: ''
+      service_uri: ''
+      created_at: 2020-02-27 22:37:30.000000000 Z
+      updated_at: 2020-02-27 22:37:30.000000000 Z
+      optional_overrides: ''
+      lockdown_inputs: 0
+      polling_frequency: 
+      node_user: ''
+      node_password: ''
+      use_ssl: 
+      escape_mode: ''
+      split_separator: Comma
+- LocalFileWatcher__147: []
+  CustomRuby__48: []
+  SubWorkflow__461:
+  - :entity: Workflow
+    :id_key: id
+    :id_value: 337
+    :dependent_field: workflow_id
+  - :entity: Workflow
+    :id_key: portable_id
+    :id_value: 78cde170-9a36-0137-14d1-2a0068596101
+    :dependent_field: workflow_portable_id
+  FaspTransfer__148:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: node_4_new_20181130153647
+    :dependent_field: central_node
+- Workflow__id__337: "/tmp/Workflow_Demo_Workflow__3630/20200305_135152/Workflow_Demo_SubWorkflow__494.wkf"
+  RemoteNode__name__node_4_new_20181130153647: []
+- LocalFileWatcher: 1.8.0
+  CustomRuby: 0.5.0
+  SubWorkflow: 1.4.1
+  FaspTransfer: 3.6.0
