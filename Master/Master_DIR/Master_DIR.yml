@@ -7,12 +7,12 @@
     generatedFrom: 492
     comments: "Imported from file /Users/anushasyed/Downloads/Workflow_Master__3615.wkf\r\nRevision
       3 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Master__492
-      (4).wkf"
+      (4).wkf\r\nRevision 12 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Master.wkf"
     revision_id: 2
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-01-28 20:42:30.000000000 Z
-    updated_at: 2020-03-04 20:34:29.000000000 Z
+    updated_at: 2020-03-17 20:27:43.000000000 Z
     folder_id: 
     description: ''
     max_running: 
@@ -107,5 +107,5 @@
     :id_key: portable_id
     :id_value: d2fa6220-9542-0137-14cd-2a0068596101
     :dependent_field: workflow_portable_id
-- Workflow__id__334: "/tmp/Master/20200317_122059/Sub.wkf"
+- Workflow__id__334: "/tmp/Master/20200317_135541/Sub.wkf"
 - SubWorkflow: 1.4.1
