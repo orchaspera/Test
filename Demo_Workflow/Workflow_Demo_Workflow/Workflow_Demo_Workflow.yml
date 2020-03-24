@@ -4,15 +4,16 @@
     id: 530
     name: Demo_Workflow
     portable_id: ef5585e0-3f04-0138-fa57-08e9fe6bebcd
-    generatedFrom: 897
+    generatedFrom: 1024
     comments: "Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       4 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__897
-      (2).wkf"
-    revision_id: 3
+      (2).wkf\r\nRevision 5 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
+      6 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf"
+    revision_id: 6
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-03-02 22:41:52.000000000 Z
-    updated_at: 2020-03-19 18:01:19.000000000 Z
+    updated_at: 2020-03-24 18:52:35.000000000 Z
     folder_id: 0
     description: ''
     max_running: 
@@ -20,7 +21,7 @@
     cleanup_after_days: 
     tags: 
     label: 
-    source_revision: Demo_Workflow|3
+    source_revision: Demo_Workflow|6
     templates: 
     user_lock: 
     locked_by: 
@@ -49,7 +50,7 @@
         </Fail>
         <Steps>
           <Step x="260" y="40" id="bff8bb20-71a6-fcd0-347c-bac6d067da7f">
-            <Action_id>152</Action_id>
+            <Action_id>168</Action_id>
             <Step_name>Watcher</Step_name>
             <Step_type>LocalFileWatcher</Step_type>
             <Error_attempts>1</Error_attempts>
@@ -89,10 +90,10 @@
             <Parameters></Parameters>
             <Inputs>
               <Input name="folder">
-                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="152" step_name="Watcher" />
+                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="168" step_name="Watcher" />
               </Input>
               <Input name="pattern">
-                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="152" step_name="Watcher" />
+                <Map_to type="output" name="FileName" step_type="LocalFileWatcher" action_id="168" step_name="Watcher" />
               </Input>
             </Inputs>
             <Outputs></Outputs>
@@ -100,7 +101,7 @@
             <weight>0</weight>
           </Step>
           <Step x="690" y="40" id="b6258fbe-d81b-90ea-92cc-8f94df4591e2">
-            <Action_id>466</Action_id>
+            <Action_id>554</Action_id>
             <Step_name>Sub-Workflow</Step_name>
             <Step_type>SubWorkflow</Step_type>
             <Error_attempts>1</Error_attempts>
@@ -123,7 +124,7 @@
             <weight>0</weight>
           </Step>
           <Step x="910" y="40" id="a9ca2525-6dcf-7258-c845-e0aca7eda382">
-            <Action_id>153</Action_id>
+            <Action_id>169</Action_id>
             <Step_name>FASP Transfer</Step_name>
             <Step_type>FaspTransfer</Step_type>
             <Error_attempts>1</Error_attempts>
@@ -148,18 +149,18 @@
         <Parameters></Parameters>
         <Notes></Notes>
       </opt>
-    id: 897
+    id: 1024
     workflow_id: 530
     error_free: 1
     created_by: 1
-    revision_id: 3
-    created_at: 2020-03-02 22:41:52.000000000 Z
-    updated_at: 2020-03-02 22:41:52.000000000 Z
+    revision_id: 6
+    created_at: 2020-03-24 18:49:03.000000000 Z
+    updated_at: 2020-03-24 18:49:03.000000000 Z
     revisions_log: 
-- LocalFileWatcher__152: !ruby/object:LocalFileWatcher
+- LocalFileWatcher__168: !ruby/object:LocalFileWatcher
     attributes:
-      id: 152
-      name: W530__Watcher_1
+      id: 168
+      name: W530__Watcher_4
       directory: "/doesnotexist"
       fileName: "*.*"
       baseDir: ''
@@ -173,8 +174,8 @@
       partial_file: 0
       return_all: 0
       run_synchronous: 
-      created_at: 2020-03-02 22:41:52.000000000 Z
-      updated_at: 2020-03-02 22:41:52.000000000 Z
+      created_at: 2020-03-24 18:49:03.000000000 Z
+      updated_at: 2020-03-24 18:49:03.000000000 Z
       trigger_type: ''
       polling_frequency: 
       comments: Watch for '' in 'nil'
@@ -224,26 +225,26 @@
       github_user_name: ''
       github_hostname: ''
       verify_ssl: 0
-  SubWorkflow__466: !ruby/object:SubWorkflow
+  SubWorkflow__554: !ruby/object:SubWorkflow
     attributes:
-      workflow_id: 337
+      workflow_id: 557
       workflow_portable_id: 78cde170-9a36-0137-14d1-2a0068596101
-      id: 466
+      id: 554
       workflowOutputs: ''
       workflowInputs: ''
       comments: ''
-      created_at: 2020-03-02 22:41:52.000000000 Z
-      updated_at: 2020-03-02 22:41:52.000000000 Z
-      name: W530__Sub-Workflow
+      created_at: 2020-03-24 18:49:03.000000000 Z
+      updated_at: 2020-03-24 18:49:03.000000000 Z
+      name: W530__Sub-Workflow_3
       exit_status_for_errors: Failed
       use_true_name: 0
       use_workorder_status: 0
       execution_priority: 
-  FaspTransfer__153: !ruby/object:FaspTransfer
+  FaspTransfer__169: !ruby/object:FaspTransfer
     attributes:
       central_node: node_4_new_20181130153647
-      id: 153
-      name: W530__FASP Transfer_2
+      id: 169
+      name: W530__FASP Transfer_5
       comments: ''
       payload: ''
       payload_file: fasp_generic.xml.erb
@@ -251,8 +252,8 @@
         'Sources_list'=>'abc', 'Target'=>'def'}"
       central_address: ''
       service_uri: ''
-      created_at: 2020-03-02 22:41:52.000000000 Z
-      updated_at: 2020-03-02 22:41:52.000000000 Z
+      created_at: 2020-03-24 18:49:03.000000000 Z
+      updated_at: 2020-03-24 18:49:03.000000000 Z
       optional_overrides: ''
       lockdown_inputs: 0
       polling_frequency: 
@@ -261,24 +262,23 @@
       use_ssl: 
       escape_mode: ''
       split_separator: Comma
-- LocalFileWatcher__152: []
+- LocalFileWatcher__168: []
   CustomRuby__48: []
-  SubWorkflow__466:
+  SubWorkflow__554:
   - :entity: Workflow
     :id_key: id
-    :id_value: 337
+    :id_value: 557
     :dependent_field: workflow_id
   - :entity: Workflow
     :id_key: portable_id
     :id_value: 78cde170-9a36-0137-14d1-2a0068596101
     :dependent_field: workflow_portable_id
-  FaspTransfer__153:
+  FaspTransfer__169:
   - :entity: RemoteNode
     :id_key: name
     :id_value: node_4_new_20181130153647
     :dependent_field: central_node
-- Workflow__id__337:
-  - 
+- Workflow__id__557: "/tmp/Demo_Workflow/20200324_115251/Workflow_Demo_SubWorkflow__949.wkf"
   RemoteNode__name__node_4_new_20181130153647: []
 - LocalFileWatcher: 1.8.0
   CustomRuby: 0.5.0

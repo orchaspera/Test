@@ -1,0 +1,171 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    portable_id: 78cde170-9a36-0137-14d1-2a0068596101
+    generatedFrom: 949
+    name: Demo Sub-Workflow
+    id: 557
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__897
+      (1)/20200318_123759/Workflow_Demo_SubWorkflow__494.wkf
+    revision_id: 2
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-03-18 20:20:55.000000000 Z
+    updated_at: 2020-03-18 20:20:55.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Demo Sub-Workflow|2
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="557">
+        <Start x="100" y="50" id="5137bf9c-310d-39af-13a1-4a22ddfd56b2">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="79c22d1c-269c-d794-6fe3-ea6d390df51d">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="8b5b946b-0fa8-5c05-1ab8-2adb6692c7f2">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="bf68b6d4-75a2-9d4b-6519-7527e88b60a9" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="8e90db49-c6a3-972d-1a4d-6f06ac9754ca">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="370" y="40" id="913420ed-de54-c875-858f-42ca9ae21152">
+            <Action_id>141</Action_id>
+            <Step_name>Baton</Step_name>
+            <Step_type>BatonFileVerification</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="5137bf9c-310d-39af-13a1-4a22ddfd56b2" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="File_name">
+                <Map_to type="value" name="abc.txt" />
+              </Input>
+            </Inputs>
+            <Outputs></Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="800" y="40" id="bf68b6d4-75a2-9d4b-6519-7527e88b60a9">
+            <Action_id>492</Action_id>
+            <Step_name>Sub-Workflow</Step_name>
+            <Step_type>SubWorkflow</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Version>1.4.1</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="913420ed-de54-c875-858f-42ca9ae21152" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs></Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 949
+    workflow_id: 557
+    error_free: 1
+    created_by: 1
+    revision_id: 2
+    created_at: 2020-03-18 20:20:55.000000000 Z
+    updated_at: 2020-03-18 20:20:55.000000000 Z
+    revisions_log: 
+- BatonFileVerification__141: !ruby/object:BatonFileVerification
+    attributes:
+      server_node: Baton
+      id: 141
+      name: W557__Baton_2
+      comments: ''
+      server: ''
+      user: ''
+      password: ''
+      test_plan: test_plan
+      plan_version: 
+      priority: Normal
+      checkers: ''
+      folder: 0
+      polling_frequency: 
+      stopOnError: 0
+      created_at: 2020-03-18 20:20:55.000000000 Z
+      updated_at: 2020-03-18 20:20:55.000000000 Z
+      baton_port: 
+      non_windows_install: 0
+      force_pass_on_warning: 0
+      input_source: ''
+      return_xml_report: 0
+      dynamic_test_plan_parameters: ''
+      verify_growing_file: 0
+      polling_frequency_sec: 
+      baton_version: Version 5.*
+  SubWorkflow__492: !ruby/object:SubWorkflow
+    attributes:
+      workflow_id: 336
+      workflow_portable_id: 
+      id: 492
+      workflowOutputs: ''
+      workflowInputs: ''
+      comments: ''
+      created_at: 2020-03-18 20:20:55.000000000 Z
+      updated_at: 2020-03-18 20:20:55.000000000 Z
+      name: W557__Sub-Workflow
+      exit_status_for_errors: Failed
+      use_true_name: 0
+      use_workorder_status: 0
+      execution_priority: 
+- BatonFileVerification__141:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: Baton
+    :dependent_field: server_node
+  SubWorkflow__492:
+  - :entity: Workflow
+    :id_key: id
+    :id_value: 336
+    :dependent_field: workflow_id
+  - :entity: Workflow
+    :id_key: portable_id
+    :id_value: 
+    :dependent_field: workflow_portable_id
+- RemoteNode__name__Baton: "/tmp/Demo_Workflow/20200324_115251/20200324_115251/Remote_nodeBaton.node"
+  Workflow__id__336:
+  - 
+- BatonFileVerification: 1.5.1
+  SubWorkflow: 1.4.1
