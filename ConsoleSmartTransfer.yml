@@ -1,0 +1,72 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 349
+    name: ConsoleSmartTransfer
+    portable_id: 5c6783a0-00d5-0137-d7dc-000c29ee7829
+    generatedFrom: 591
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_ConsoleSmartTransfer__3151.yml
+    revision_id: 104
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-02-11 19:31:21.000000000 Z
+    updated_at: 2020-02-13 00:11:48.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: ConsoleSmartTransfer|104
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="349">
+      <Start x="90" y="150" id="7f5eed71-9419-2833-ca2d-7d1dc9ff9f8e">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="793e90c7-ab1b-7044-80d4-40847539d594">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="810" y="80" id="3690e315-905c-00ac-88a1-010caccab45f">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='2c6faa81-a9b5-c507-60a3-e8c837791d5d' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="dd7d3709-100b-8567-4434-e460eabb4009">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="450" y="90" id="2c6faa81-a9b5-c507-60a3-e8c837791d5d">
+      <Action_id>4</Action_id><Step_name>New ConsoleSmartTransferOperation Step</Step_name><Step_type>ConsoleSmartTransferOperation</Step_type><Version>0.1.5</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='7f5eed71-9419-2833-ca2d-7d1dc9ff9f8e' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters><Parameter id='d5f40495-3539-a829-de55-d09528596385' router='draw2d.ManhattanConnectionRouter' /></Parameters><Inputs><Input name='source_path_list'><Map_to type='parameter' name='source_path_list' /></Input></Inputs><Outputs><Output name='Transfer_Ids'></Output><Output name='Transfer_Status'></Output><Output name='Raw_Output'></Output><Output name='Error_Message'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters><Parameter x="200" y="330" id="d5f40495-3539-a829-de55-d09528596385">
+      <Value>[""]</Value><Value_type>array</Value_type><Name>source_path_list</Name><Runtime_override>false</Runtime_override><Runtime_optional>false</Runtime_optional><Comments>{}</Comments></Parameter>
+      </Parameters><Notes></Notes></Workflow>
+    id: 591
+    workflow_id: 349
+    error_free: 1
+    created_by: 1
+    revision_id: 104
+    created_at: 2020-02-13 00:11:46.000000000 Z
+    updated_at: 2020-02-13 00:11:46.000000000 Z
+    revisions_log: 
+- ConsoleSmartTransferOperation__4: !ruby/object:ConsoleSmartTransferOperation
+    attributes:
+      id: 4
+      name: W349__New ConsoleSmartTransferOperation Step_1
+      comments: ''
+      console_ip: 10.0.174.47
+      console_port: 
+      source_path_list: ''
+      source_base: ''
+      smart_transfer_id: 11
+      transfer_name: anusha1
+      transfer_comments: hi HI hi HI HEY
+      operation: Submit/Initiate a Smart Transfer
+      login: admin
+      password: Aspera1234_
+      created_at: 2020-02-12 23:35:29.000000000 Z
+      updated_at: 2020-02-13 00:11:44.000000000 Z
+      monitor_status: 1
+      polling_frequency: 
+- ConsoleSmartTransferOperation__4: []
+- {}
+- ConsoleSmartTransferOperation: 0.1.5
