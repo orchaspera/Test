@@ -1,0 +1,109 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    portable_id: b9ab0310-4fad-0136-f7fa-0800278968c2
+    generatedFrom: 1006
+    name: '3'
+    id: 596
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_0__2540/20200323_172220/Workflow_1__2539/20200323_172220/Workflow_2__2538/20200323_172220/Workflow_3__2537.wkf
+    revision_id: 2
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-03-24 00:44:15.000000000 Z
+    updated_at: 2020-03-24 00:44:15.000000000 Z
+    folder_id: 0
+    description: 
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: 3|2
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="596">
+        <Start x="100" y="50" id="bbecec14-37be-be45-19a2-af940c4c5bc0">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="53e05d5d-7226-2225-897a-9b1e60a7a3e7">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="17536c3e-98af-e5b6-b7b3-20f5d6bb8209">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="d4a9f2a8-3af3-fe17-d344-7a57fe44c8fb" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="f2ab533d-1907-9732-78ef-dec733463df8">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="510" y="40" id="d4a9f2a8-3af3-fe17-d344-7a57fe44c8fb">
+            <Action_id>533</Action_id>
+            <Step_name>New SubWorkflow Step</Step_name>
+            <Step_type>SubWorkflow</Step_type>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>1</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>1</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Version>1.4.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="bbecec14-37be-be45-19a2-af940c4c5bc0" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs></Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 1006
+    workflow_id: 596
+    error_free: 1
+    created_by: 1
+    revision_id: 2
+    created_at: 2020-03-24 00:44:15.000000000 Z
+    updated_at: 2020-03-24 00:44:15.000000000 Z
+    revisions_log: 
+- SubWorkflow__533: !ruby/object:SubWorkflow
+    attributes:
+      workflow_id: 595
+      workflow_portable_id: b9afc160-4fad-0136-f7fa-0800278968c2
+      id: 533
+      workflowOutputs: ''
+      workflowInputs: ''
+      comments: ''
+      created_at: 2020-03-24 00:44:15.000000000 Z
+      updated_at: 2020-03-24 00:44:15.000000000 Z
+      name: W596__New SubWorkflow Step
+      exit_status_for_errors: Failed
+      use_true_name: 0
+      use_workorder_status: 0
+      execution_priority: 
+- SubWorkflow__533:
+  - :entity: Workflow
+    :id_key: id
+    :id_value: 595
+    :dependent_field: workflow_id
+  - :entity: Workflow
+    :id_key: portable_id
+    :id_value: b9afc160-4fad-0136-f7fa-0800278968c2
+    :dependent_field: workflow_portable_id
+- Workflow__id__595: "/tmp/0/20200323_174447/20200323_174447/20200323_174447/20200323_174447/Workflow_4__1005.wkf"
+- SubWorkflow: 1.4.1
