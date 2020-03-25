@@ -1,0 +1,116 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    portable_id: ffe73410-4fac-0136-f7f9-0800278968c2
+    generatedFrom: 1021
+    name: '10'
+    id: 589
+    comments: |-
+      Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_0__2540/20200323_172220/Workflow_1__2539/20200323_172220/Workflow_2__2538/20200323_172220/Workflow_3__2537/20200323_172220/Workflow_4__2536/20200323_172220/Workflow_5__2535/20200323_172220/Workflow_6__2534/20200323_172221/Workflow_7__2533/20200323_172221/Workflow_8__2532/20200323_172221/Workflow_9__2531/20200323_172221/Workflow_10__2530.wkf
+      Revision 2 imported from file /tmp/curr_wkf/Workflow_0/Workflow_1/Workflow_2/Workflow_3/Workflow_4/Workflow_5/Workflow_6/Workflow_7/Workflow_8/Workflow_9/Workflow_10/Workflow_10.yml
+      Revision 3 imported from file /tmp/curr_wkf/Workflow_0/Workflow_10/Workflow_10.yml
+    revision_id: 3
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-03-24 00:44:15.000000000 Z
+    updated_at: 2020-03-24 00:45:31.000000000 Z
+    folder_id: 0
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: 10|3
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="589">
+        <Start x="100" y="50" id="c00ab068-e801-b88f-89f2-633499bf6618">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="9d540136-4198-2d4a-e1c6-d4409cef16d6">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="fd043e69-fe98-cf38-477a-69d1481be956">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="153003de-dc4d-5a59-b3fd-0c79fe5fc705" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="eeb3c961-59af-5500-4551-3f4e50a8d26d">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="510" y="40" id="153003de-dc4d-5a59-b3fd-0c79fe5fc705">
+            <Action_id>426</Action_id>
+            <Step_name>New CustomRuby Step</Step_name>
+            <Step_type>CustomRuby</Step_type>
+            <Version>0.4.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="c00ab068-e801-b88f-89f2-633499bf6618" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs></Outputs>
+            <comments></comments>
+            <weight>undefined</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 1021
+    workflow_id: 589
+    error_free: 1
+    created_by: 1
+    revision_id: 3
+    created_at: 2020-03-24 00:45:31.000000000 Z
+    updated_at: 2020-03-24 00:45:31.000000000 Z
+    revisions_log: 
+- CustomRuby__426: !ruby/object:CustomRuby
+    attributes:
+      id: 426
+      name: W589__Oyala Destination_3
+      comments: ''
+      execute_code: |-
+        destnation_path = @inputs['destnation_path']
+        if destnation_path.include? "To_Webportal_Channelnewsasia"
+            @outputs['remote_node'] = "transfer.ooyala.com"
+            @outputs['remote_user'] = "wcmscna+aspera@mediacorp.com.sg"
+            @outputs['remote_password'] = "ZpNfQXU6q"
+            @outputs['remote_path'] = "/"
+        else
+            @outputs['remote_node'] = "transfer.ooyala.com"
+            @outputs['remote_user'] = "wcmssupport+aspera@mediacorp.com.sg"
+            @outputs['remote_password'] = "pN8rwSaUa"
+            @outputs['remote_path'] = "/"
+        end
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-03-24 00:45:31.000000000 Z
+      updated_at: 2020-03-24 00:45:31.000000000 Z
+      mandatoryInputs: "{'destnation_path'=>'string'}"
+      optionalInputs: ''
+      typedOutputs: "{'remote_password'=>'string', 'remote_path'=>'string', 'remote_user'=>'string',
+        'remote_node'=>'string'}"
+      use_code_from_github: 
+      github_token: 
+      github_repo: 
+      github_file_path: 
+      github_branch_name: 
+      github_user_name: 
+      github_hostname: 
+      verify_ssl: 1
+- CustomRuby__426: []
+- {}
+- CustomRuby: 0.5.0
