@@ -4,17 +4,17 @@
     id: 335
     name: Master
     portable_id: c7687120-9542-0137-14cd-2a0068596101
-    generatedFrom: 492
+    generatedFrom: 997
     comments: "Imported from file /Users/anushasyed/Downloads/Workflow_Master__3615.wkf\r\nRevision
       3 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Master__492
       (4).wkf\r\nRevision 12 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Master.wkf\r\nRevision
       14 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Master__492
-      (9).wkf"
-    revision_id: 2
+      (9).wkf\nRevision 27 imported from file /tmp/curr_wkf/Workflow_Master/Workflow_Master.yml"
+    revision_id: 27
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-01-28 20:42:30.000000000 Z
-    updated_at: 2020-03-18 20:05:35.000000000 Z
+    updated_at: 2020-03-23 21:05:24.000000000 Z
     folder_id: 
     description: ''
     max_running: 
@@ -22,7 +22,7 @@
     cleanup_after_days: 
     tags: 
     label: 
-    source_revision: Master|2
+    source_revision: Master|27
     templates: 
     user_lock: 
     locked_by: 
@@ -51,7 +51,7 @@
         </Fail>
         <Steps>
           <Step x="580" y="40" id="d34dc92f-6ad8-b7ef-1f42-2d38010e3d1b">
-            <Action_id>232</Action_id>
+            <Action_id>526</Action_id>
             <Step_name>New SubWorkflow Step</Step_name>
             <Step_type>SubWorkflow</Step_type>
             <Error_attempts>1</Error_attempts>
@@ -77,30 +77,30 @@
         <Parameters></Parameters>
         <Notes></Notes>
       </opt>
-    id: 492
+    id: 997
     workflow_id: 335
     error_free: 1
     created_by: 1
-    revision_id: 2
-    created_at: 2020-01-28 20:42:30.000000000 Z
-    updated_at: 2020-01-28 20:42:30.000000000 Z
+    revision_id: 27
+    created_at: 2020-03-23 21:05:24.000000000 Z
+    updated_at: 2020-03-23 21:05:24.000000000 Z
     revisions_log: 
-- SubWorkflow__232: !ruby/object:SubWorkflow
+- SubWorkflow__526: !ruby/object:SubWorkflow
     attributes:
       workflow_id: 334
       workflow_portable_id: d2fa6220-9542-0137-14cd-2a0068596101
-      id: 232
+      id: 526
       workflowOutputs: ''
       workflowInputs: ''
       comments: ''
-      created_at: 2020-01-28 20:42:30.000000000 Z
-      updated_at: 2020-01-28 20:42:30.000000000 Z
-      name: W335__New SubWorkflow Step
+      created_at: 2020-03-23 21:05:24.000000000 Z
+      updated_at: 2020-03-23 21:05:24.000000000 Z
+      name: W335__New SubWorkflow Step_17
       exit_status_for_errors: Failed
       use_true_name: 0
       use_workorder_status: 0
       execution_priority: 
-- SubWorkflow__232:
+- SubWorkflow__526:
   - :entity: Workflow
     :id_key: id
     :id_value: 334
@@ -109,5 +109,5 @@
     :id_key: portable_id
     :id_value: d2fa6220-9542-0137-14cd-2a0068596101
     :dependent_field: workflow_portable_id
-- Workflow__id__334: "/tmp/Master/20200323_140513/Workflow_Sub__491.wkf"
+- Workflow__id__334: "/tmp/Master/20200324_174153/Workflow_Sub__998.wkf"
 - SubWorkflow: 1.4.1
