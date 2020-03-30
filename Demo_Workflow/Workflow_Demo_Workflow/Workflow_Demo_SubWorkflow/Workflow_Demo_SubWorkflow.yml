@@ -1,13 +1,12 @@
 ---
 - !ruby/object:Workflow
   attributes:
-    portable_id: 78cde170-9a36-0137-14d1-2a0068596101
-    generatedFrom: 949
-    name: Demo Sub-Workflow
     id: 557
+    name: Demo Sub-Workflow
     comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__897
       (1)/20200318_123759/Workflow_Demo_SubWorkflow__494.wkf
     revision_id: 2
+    generatedFrom: 949
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-03-18 20:20:55.000000000 Z
@@ -20,6 +19,7 @@
     tags: 
     label: 
     source_revision: Demo Sub-Workflow|2
+    portable_id: 78cde170-9a36-0137-14d1-2a0068596101
     templates: 
     user_lock: 
     locked_by: 
@@ -164,7 +164,7 @@
     :id_key: portable_id
     :id_value: 
     :dependent_field: workflow_portable_id
-- RemoteNode__name__Baton: "/tmp/Demo_Workflow/20200330_110604/20200330_110604/Remote_nodeBaton.node"
+- RemoteNode__name__Baton: "/tmp/Demo_Workflow/20200330_112841/20200330_112841/Remote_nodeBaton.node"
   Workflow__id__336:
   - 
 - BatonFileVerification: 1.5.1

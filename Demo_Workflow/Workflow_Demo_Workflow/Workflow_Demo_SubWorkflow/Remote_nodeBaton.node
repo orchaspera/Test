@@ -1,8 +1,8 @@
 ---
 - !ruby/object:RemoteNode
   attributes:
-    name: Baton
     id: 2
+    name: Baton
     comments: Node imported successfully.
     address: 172.23.144.59
     port: 22
