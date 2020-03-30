@@ -1,3 +1,3 @@
 ---
-- Workflow_Demo_Workflow__1024.yml
-- Workflow_Demo_SubWorkflow__949.wkf
+- Workflow_Demo_Workflow.yml
+- Workflow_Demo Sub-Workflow.wkf
