@@ -8,12 +8,14 @@
     comments: "Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
       4 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__897
       (2).wkf\r\nRevision 5 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
-      6 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf"
+      6 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
+      7 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf\r\nRevision
+      8 imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Demo_Workflow__3630.wkf"
     revision_id: 6
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-03-02 22:41:52.000000000 Z
-    updated_at: 2020-03-24 18:52:35.000000000 Z
+    updated_at: 2020-03-24 20:04:01.000000000 Z
     folder_id: 0
     description: ''
     max_running: 
@@ -278,7 +280,7 @@
     :id_key: name
     :id_value: node_4_new_20181130153647
     :dependent_field: central_node
-- Workflow__id__557: "/tmp/Demo_Workflow/20200324_123428/Workflow_Demo_SubWorkflow__949.wkf"
+- Workflow__id__557: "/tmp/Demo_Workflow/20200330_110604/Workflow_Demo_SubWorkflow__949.wkf"
   RemoteNode__name__node_4_new_20181130153647: []
 - LocalFileWatcher: 1.8.0
   CustomRuby: 0.5.0
