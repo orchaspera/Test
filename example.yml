@@ -1,0 +1,74 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 22
+    portable_id: 57465f30-5b3c-0138-9b4e-0050569f233e
+    generatedFrom: 24
+    name: example
+    comments: ''
+    revision_id: 1
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-04-07 20:29:10.000000000 Z
+    updated_at: 2020-04-07 20:34:36.000000000 Z
+    folder_id: 1
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: example|1
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="22">
+      <Start x="100" y="50" id="37e47c11-e610-0c90-cef1-c16763869b6d">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="d793c267-ad5e-4d6a-b639-58fcdc34c955">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="560" y="90" id="6b76a767-8119-a856-c0f4-0c8d71e80d7e">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='9c4faca5-999b-39a8-492e-7639b9741075' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="825ddf46-5ee2-5599-2140-e273e8da5f48">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="300" y="87" id="9c4faca5-999b-39a8-492e-7639b9741075">
+      <Action_id>7</Action_id><Step_name>New CustomRuby Step</Step_name><Step_type>CustomRuby</Step_type><Version>0.6.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='37e47c11-e610-0c90-cef1-c16763869b6d' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs></Outputs><comments></comments><weight>undefined</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 24
+    workflow_id: 22
+    error_free: 1
+    created_by: 1
+    revision_id: 1
+    created_at: 2020-04-07 20:34:32.000000000 Z
+    updated_at: 2020-04-07 20:34:32.000000000 Z
+    revisions_log: 
+- CustomRuby__7: !ruby/object:CustomRuby
+    attributes:
+      id: 7
+      name: W22__New CustomRuby Step
+      comments: ''
+      execute_code: puts "hello"
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-04-07 20:34:30.000000000 Z
+      updated_at: 2020-04-07 20:34:30.000000000 Z
+      mandatoryInputs: ''
+      optionalInputs: ''
+      typedOutputs: ''
+      use_code_from_github: 0
+      github_token: ''
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: ''
+      verify_ssl: 1
+      use_cached: 0
+- CustomRuby__7: []
+- {}
+- CustomRuby: 0.6.1
