@@ -1,0 +1,117 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 15
+    portable_id: ce508cc0-60ad-0138-0a8a-0050569f538f
+    generatedFrom: 
+    name: RemoteFileWatcher (dup_10)
+    comments: "Created from revision #4 from workflow 'RemoteFileWatcher'\r\n        "
+    revision_id: 
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-04-14 18:43:50.000000000 Z
+    updated_at: 2020-04-14 18:43:50.000000000 Z
+    folder_id: 
+    description: 
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: 
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <workflow id="15">
+        <Start x="100" y="50" id="1d703d57-ea84-f1e5-f535-5dce2fb7f79c">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1200" y="350" id="d694b96e-9d29-7b87-ed7e-3123e7634126">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1200" y="50" id="e40c41c5-50e6-734f-3a18-6b864cb03f99">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="adf7efc8-f0e5-f6d7-22af-f3cbc5dfce10" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1200" y="200" id="2571bd1f-8d2d-82ff-bd38-c7d618327cf2">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="427" y="109" id="adf7efc8-f0e5-f6d7-22af-f3cbc5dfce10">
+            <Action_id>13</Action_id>
+            <Step_name>New RemoteFileWatcher Step</Step_name>
+            <Step_type>RemoteFileWatcher</Step_type>
+            <Version>2.3.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="1d703d57-ea84-f1e5-f535-5dce2fb7f79c" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs></Inputs>
+            <Outputs>
+              <Output name="File_list" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>{}</comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters></Parameters>
+        <Notes></Notes>
+      </workflow>
+    id: 15
+    workflow_id: 15
+    error_free: 1
+    created_by: 1
+    revision_id: 1
+    created_at: 2020-04-14 18:43:50.000000000 Z
+    updated_at: 2020-04-14 18:43:50.000000000 Z
+    revisions_log: 
+- RemoteFileWatcher__13: !ruby/object:RemoteFileWatcher
+    attributes:
+      remote_node: node5intlab
+      id: 13
+      name: W15__New RemoteFileWatcher Step
+      comments: ''
+      watch_directory: "/"
+      file_pattern: ".*"
+      remote_node_user: 
+      remote_node_password: 
+      polling_frequency: 
+      created_at: 2020-04-14 18:43:50.000000000 Z
+      updated_at: 2020-04-14 18:43:50.000000000 Z
+      check_once: 0
+      keep_ongoing: 1
+      trigger_type: ''
+      return_single: 0
+      trigger_on_partial: 0
+      ignore_folders: 0
+      ignore_instant_files: 0
+      scan_timeout: 
+      ignore_zero_byte_files: 0
+      multi_folders: 0
+      recursive_search: 0
+      extensive_debug: 0
+      force_exact_matching: 0
+      cool_off: 
+      result_limit: 0
+      exclusions: ''
+      ignore_ctime: 0
+      aggressive_pruning: 0
+      beacon_file_path: ''
+- RemoteFileWatcher__13:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: node5intlab
+    :dependent_field: remote_node
+- {}
+- RemoteFileWatcher: 2.3.0
