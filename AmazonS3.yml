@@ -1,0 +1,107 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 5
+    portable_id: 399d0940-71f1-0138-b616-0050569fe485
+    generatedFrom: 7
+    name: AmazonS3
+    comments: ''
+    revision_id: 2
+    created_by: 4
+    run_as: SYSTEM
+    created_at: 2020-05-06 17:59:29.000000000 Z
+    updated_at: 2020-05-07 18:07:04.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: AmazonS3|2
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="5">
+      <Start x="100" y="50" id="1330a79b-73ab-8239-b69a-3d2a56c633d2">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1200" y="350" id="252fde2c-8e42-c0ff-9fda-121815d58df5">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="a5a8ebcb-3819-0106-033e-67421f97818f">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='f797c830-8eaf-7bae-6e79-89afbc003f48' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="b9766abd-0349-4e6d-a3bb-7a07a7767eef">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="400" y="40" id="ed176902-4784-a6f0-8379-93ef7bb50c38">
+      <Action_id>2</Action_id><Step_name>New AmazonS3Operation Step</Step_name><Step_type>AmazonS3Operation</Step_type><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>1</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>1</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='1330a79b-73ab-8239-b69a-3d2a56c633d2' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="890" y="190" id="f797c830-8eaf-7bae-6e79-89afbc003f48">
+      <Action_id>2</Action_id><Step_name>New AmazonDynamodbOperation Step</Step_name><Step_type>AmazonDynamodbOperation</Step_type><Version>0.1.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='ed176902-4784-a6f0-8379-93ef7bb50c38' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs></Outputs><comments></comments><weight>undefined</weight></Step>
+      </Steps><Parameters></Parameters><Notes></Notes></Workflow>
+    id: 7
+    workflow_id: 5
+    error_free: 
+    created_by: 4
+    revision_id: 2
+    created_at: 2020-05-06 18:10:54.000000000 Z
+    updated_at: 2020-05-06 18:11:01.000000000 Z
+    revisions_log: initial
+- AmazonS3Operation__2: !ruby/object:AmazonS3Operation
+    attributes:
+      id: 2
+      name: W5__New AmazonS3Operation Step
+      comments: ''
+      operation: upload
+      aws_key: AKIAJPRWDQ5BX7QTQKHQ
+      aws_secret: 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
+      aws_region: ''
+      bucket: ''
+      object_key: ''
+      local_file_path: ''
+      make_public: 
+      created_at: 2020-05-06 18:02:01.000000000 Z
+      updated_at: 2020-05-06 18:02:01.000000000 Z
+      restore_version_id: ''
+      restore_days: 
+      restore_tier: ''
+      request_payer: ''
+      use_accelerate_endpoint: 0
+      verify_ssl: 0
+      multipart_thread_limit: 
+      multipart_chunk_size: 
+      multipart_upload_threshold: 
+      allow_multipart_upload: 0
+      overwrite_existing_file: 0
+      s3_file_path: ''
+      proxy_url: ''
+      method_type: ''
+      expires_in: 
+      encode_flag: 1
+      source_region: ''
+      endpoint_url: ''
+      force_path_style: 0
+      storage_class: ''
+      prefix: ''
+      delimiter: ''
+      start_after: ''
+  AmazonDynamodbOperation__2: !ruby/object:AmazonDynamodbOperation
+    attributes:
+      id: 2
+      name: W5__AmazonDynamodbOperation_
+      comments: ''
+      operation: Get Item
+      aws_key: AKIAJPRWDQ5BX7QTQKHQ
+      aws_secret: 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
+      aws_region: ''
+      table_name: ''
+      attr_hash: ''
+      created_at: 2020-05-06 18:10:22.000000000 Z
+      updated_at: 2020-05-06 18:10:22.000000000 Z
+      verify_ssl: 1
+- AmazonS3Operation__2: []
+  AmazonDynamodbOperation__2: []
+- {}
+- AmazonS3Operation: 1.1.0
+  AmazonDynamodbOperation: 0.1.2
