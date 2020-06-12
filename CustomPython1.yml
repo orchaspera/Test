@@ -3,14 +3,14 @@
   attributes:
     id: 1
     portable_id: 768188c0-8e58-0138-c8ae-0050569f538f
-    generatedFrom: 2
+    generatedFrom: 4
     name: CustomPython1
     comments: ''
-    revision_id: 2
+    revision_id: 3
     created_by: 1
     run_as: SYSTEM
     created_at: 2020-06-11 21:29:05.000000000 Z
-    updated_at: 2020-06-11 21:34:30.000000000 Z
+    updated_at: 2020-06-12 17:56:14.000000000 Z
     folder_id: 
     description: ''
     max_running: 
@@ -18,7 +18,7 @@
     cleanup_after_days: 
     tags: 
     label: 
-    source_revision: CustomPython1|2
+    source_revision: CustomPython1|3
     templates: 
     user_lock: 
     locked_by: 
@@ -27,32 +27,32 @@
     xml_export: |
       <?xml version="1.0" encoding="ISO-8859-1"?>
       <Workflow id="1">
-      <Start x="100" y="50" id="b0294e47-bd3f-36c2-568e-bfea9d4ed8c4">
+      <Start x="100" y="50" id="0e9ae264-8349-073c-0331-d4bb71b39aee">
       <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
-      <Error x="1200" y="350" id="f89b0035-83ae-645d-ee21-0e30985cacf2">
+      <Error x="1200" y="350" id="9d7b7e6f-e56a-3053-2dc5-1075b9d07209">
       <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
-      <End x="1200" y="50" id="1e5eca41-2d1e-6d4f-6baa-e008ca41e027">
-      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='e7825e01-81e2-e2c0-1d9e-1b39d26abaa4' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
-      <Fail x="1200" y="200" id="3b8f6cc3-76e4-02bd-24d3-a7745b2c52b2">
+      <End x="1200" y="50" id="5cb6e18f-b5ce-389c-3497-a85a056c7cf9">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='8e0a5424-cefe-0976-98d9-13fb464bd84e' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="cbe5674d-4b7a-e9e0-824b-be80b27179f8">
       <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
-      <Steps><Step x="550" y="40" id="e7825e01-81e2-e2c0-1d9e-1b39d26abaa4">
-      <Action_id>2</Action_id><Step_name>New CustomPython Step</Step_name><Step_type>CustomPython</Step_type><Version>0.0.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='b0294e47-bd3f-36c2-568e-bfea9d4ed8c4' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs></Inputs><Outputs><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Steps><Step x="550" y="40" id="8e0a5424-cefe-0976-98d9-13fb464bd84e">
+      <Action_id>2</Action_id><Step_name>New CustomPython Step</Step_name><Step_type>CustomPython</Step_type><Version>0.0.1</Version><On_timeout></On_timeout><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='0e9ae264-8349-073c-0331-d4bb71b39aee' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='Name'><Map_to type='value' name="Deb" /></Input></Inputs><Outputs><Output name='Step_information'></Output></Outputs><Pre_processing></Pre_processing><Post_processing></Post_processing><comments>{}</comments><weight>0</weight></Step>
       </Steps><Parameters></Parameters><Notes></Notes></Workflow>
-    id: 2
+    id: 4
     workflow_id: 1
     error_free: 1
-    created_by: 1
-    revision_id: 2
-    created_at: 2020-06-11 21:34:20.000000000 Z
-    updated_at: 2020-06-11 21:34:26.000000000 Z
-    revisions_log: rev 2
+    created_by: 3
+    revision_id: 3
+    created_at: 2020-06-12 17:56:04.000000000 Z
+    updated_at: 2020-06-12 17:56:10.000000000 Z
+    revisions_log: rev3
 - CustomPython__2: !ruby/object:CustomPython
     attributes:
       id: 2
       name: W1__New CustomPython Step
       comments: ''
       execute_code: print('Hello World!')
-      mandatoryInputs: ''
+      mandatoryInputs: "{'Name'=>'string'}"
       optionalInputs: ''
       typedOutputs: ''
       use_code_from_github: 0
@@ -65,7 +65,7 @@
       verify_ssl: 1
       use_cached: 0
       created_at: 2020-06-11 21:31:34.000000000 Z
-      updated_at: 2020-06-11 21:33:52.000000000 Z
+      updated_at: 2020-06-12 17:48:56.000000000 Z
 - CustomPython__2: []
 - {}
 - CustomPython: 0.0.1
