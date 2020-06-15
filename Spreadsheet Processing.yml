@@ -1,0 +1,136 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 1
+    portable_id: a20dece0-8d73-0138-c7b1-0050569f233e
+    generatedFrom: 31
+    name: Spreadsheet Processing
+    comments: ''
+    revision_id: 28
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-06-10 18:10:53.000000000 Z
+    updated_at: 2020-06-11 07:34:50.000000000 Z
+    folder_id: 
+    description: ''
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Spreadsheet Processing|28
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="1">
+      <Start x="100" y="50" id="41532b4f-1137-4665-a15c-fc6ed8fd1065">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters><Parameter id='fc85358e-a6d7-6e04-2092-d7c75bf9f868' router='draw2d.ManhattanConnectionRouter' /></Parameters></Start>
+      <Error x="1200" y="350" id="fddfe7b3-9a0d-ff9a-bb22-b66117103b8e">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1200" y="50" id="38df5184-f660-11dc-8e24-23c060e7f5a5">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='6a6f52a0-a74a-8d19-007f-ea096ef637db' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="1200" y="200" id="7145098a-c17c-1905-3557-73705b37c305">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Fail>
+      <Steps><Step x="570" y="40" id="770cf005-1ae7-7835-26cd-c9059d28a556">
+      <Action_id>1</Action_id><Step_name>New CustomPython Step</Step_name><Step_type>CustomPython</Step_type><Version>0.0.1</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='9f4e9bbd-afc5-86c2-9b7d-f6818310cb51' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='data'><Map_to type='output' name='Sheets' step_type='SpreadsheetParser' action_id='3' step_name='New SpreadsheetParser Step' /></Input></Inputs><Outputs><Output name='Step_information'></Output><Output name='files'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="290" y="40" id="9f4e9bbd-afc5-86c2-9b7d-f6818310cb51">
+      <Action_id>3</Action_id><Step_name>New SpreadsheetParser Step</Step_name><Step_type>SpreadsheetParser</Step_type><Version>0.1.4</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='41532b4f-1137-4665-a15c-fc6ed8fd1065' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='global' name='Input Filename' /></Input></Inputs><Outputs><Output name='Sheets'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="870" y="40" id="6a6f52a0-a74a-8d19-007f-ea096ef637db">
+      <Action_id>7</Action_id><Step_name>New EmailNotification Step</Step_name><Step_type>EmailNotification</Step_type><Version>0.5.6</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='770cf005-1ae7-7835-26cd-c9059d28a556' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='filename'><Map_to type='global' name='Input Filename' /></Input></Inputs><Outputs><Output name='FullMessage'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters><Parameter x="110" y="240" id="fc85358e-a6d7-6e04-2092-d7c75bf9f868">
+      <Value>/root/Book1.xlsx</Value><Value_type>string</Value_type><Name>Input Filename</Name><Runtime_override>false</Runtime_override><Runtime_optional>false</Runtime_optional><Comments>{}</Comments></Parameter>
+      </Parameters><Notes></Notes></Workflow>
+    id: 31
+    workflow_id: 1
+    error_free: 1
+    created_by: 1
+    revision_id: 28
+    created_at: 2020-06-11 07:34:49.000000000 Z
+    updated_at: 2020-06-11 07:34:49.000000000 Z
+    revisions_log: 
+- CustomPython__1: !ruby/object:CustomPython
+    attributes:
+      id: 1
+      name: W1__New CustomPython Step
+      comments: ''
+      execute_code: |-
+        from bokeh.plotting import figure, output_file, show
+        import datetime
+
+        years = [2017, 2018, 2019, 2020]
+
+        # create a new plot with a title and axis labels
+        p = figure(title="PPG Over Four Seasons", x_axis_label='Year', y_axis_label='PPG')
+
+        # plot the data
+        for k, v in inputs['data']['Sheet1'].items():
+          # add a line renderer with legend and line thickness
+          p.line(years, [v['B'], v['C'], v['D'], v['E']], legend_label=v['A'], line_width=2)
+
+        # export to file
+        now = str(datetime.datetime.now().time())
+        html_path = '/root/bokeh/'+now+'.html'
+        output_file(html_path)
+        show(p)
+
+        outputs['files'] = html_path
+      mandatoryInputs: "{'data'=>'hash'}"
+      optionalInputs: ''
+      typedOutputs: "{'files'=>'string'}"
+      use_code_from_github: 0
+      github_token: ''
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: ''
+      verify_ssl: 1
+      use_cached: 0
+      created_at: 2020-06-10 18:11:55.000000000 Z
+      updated_at: 2020-06-11 07:34:46.000000000 Z
+  SpreadsheetParser__3: !ruby/object:SpreadsheetParser
+    attributes:
+      id: 3
+      name: W1__New SpreadsheetParser Step_2
+      comments: ''
+      file_path: ''
+      first_sheet_only: 0
+      organize_by: by rows
+      index_by: by rows and columns
+      drop_header_row: 1
+      drop_header_col: 0
+      typed_outputs: 
+      created_at: 2020-06-11 06:13:43.000000000 Z
+      updated_at: 2020-06-11 06:31:27.000000000 Z
+      mark_warnings: 0
+  EmailNotification__7: !ruby/object:EmailNotification
+    attributes:
+      id: 7
+      name: W1__New EmailNotification Step_4
+      comments: ''
+      template: ''
+      payload: |-
+        <MessageDefinition><Destinations><To>haris.mohamedy@ibm.com</To></Destinations><Subject>File Processed</Subject><Message>The file <%=filename%> has been processed.</Message>
+        </MessageDefinition>"
+      created_at: 2020-06-11 06:11:03.000000000 Z
+      updated_at: 2020-06-11 06:27:45.000000000 Z
+      mailer_name: ''
+      attachment_list: 
+      subject_line: 
+      destinations: 
+      reply_to: 
+      from_name: 
+      from_address: 
+      use_payload: 1
+      only_accept_full_email_address: 0
+- CustomPython__1: []
+  SpreadsheetParser__3: []
+  EmailNotification__7: []
+- {}
+- CustomPython: 0.0.1
+  SpreadsheetParser: 0.1.4
+  EmailNotification: 0.5.6
