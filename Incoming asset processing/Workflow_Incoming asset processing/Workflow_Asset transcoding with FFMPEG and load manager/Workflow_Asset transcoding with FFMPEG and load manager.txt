@@ -1,4 +1,4 @@
 ---
 - Workflow_Asset transcoding with FFMPEG and load manager.yml
-- Remote_nodelocalhost_new_20200610223301.node
-- Remote_nodelocalhost_new_20200610223301.node
+- Remote_nodelocalhost_new_20200615011047.node
+- Remote_nodelocalhost_new_20200615011047.node

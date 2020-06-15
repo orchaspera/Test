@@ -1,8 +1,8 @@
 ---
 - !ruby/object:RemoteNode
   attributes:
-    name: localhost
-    id: 2
+    name: localhost_new_20200615011047
+    id: 3
     comments: Node imported successfully.
     address: 127.0.0.1
     port: 

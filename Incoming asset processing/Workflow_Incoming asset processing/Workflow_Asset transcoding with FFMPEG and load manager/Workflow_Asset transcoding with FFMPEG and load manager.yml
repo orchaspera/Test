@@ -2,15 +2,15 @@
 - !ruby/object:Workflow
   attributes:
     portable_id: 73498fb0-6e93-0134-a30b-063966335dd0
-    generatedFrom: 10
+    generatedFrom: 5
     name: Asset transcoding with FFMPEG and load manager
-    id: 2
+    id: 3
     comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Incoming_asset_processing__3326/20200611_073228/Workflow_Asset_transcoding_with_FFMPEG_and_load_manager__3692.wkf
     revision_id: 17
     created_by: 1
     run_as: SYSTEM
-    created_at: 2020-06-11 05:33:03.000000000 Z
-    updated_at: 2020-06-11 05:33:04.000000000 Z
+    created_at: 2020-06-15 08:10:47.000000000 Z
+    updated_at: 2020-06-15 08:10:48.000000000 Z
     folder_id: 0
     description: 
     max_running: 
@@ -25,7 +25,7 @@
 - !ruby/object:Whiteboard
   attributes:
     xml_export: |
-      <opt id="2">
+      <opt id="3">
         <Start x="19" y="19" id="fce597fa-6e07-9d55-1d2f-ec626c1e4229">
           <Synch_factor>0</Synch_factor>
           <Prerequisites></Prerequisites>
@@ -51,7 +51,7 @@
         </Fail>
         <Steps>
           <Step x="839" y="149" id="8ec2cc4e-cfb1-7bd0-9452-4302541288d0">
-            <Action_id>1</Action_id>
+            <Action_id>2</Action_id>
             <Step_name>Release FFMPEG transcoder</Step_name>
             <Step_type>LoadManager</Step_type>
             <Version>0.3.0</Version>
@@ -62,7 +62,7 @@
             <Parameters></Parameters>
             <Inputs>
               <Input name="Allocation_token_to_release">
-                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="4" step_name="Wait for FFMPEG transcoder" />
               </Input>
             </Inputs>
             <Outputs>
@@ -76,7 +76,7 @@
             <weight>0</weight>
           </Step>
           <Step x="501" y="11" id="da8a6907-f4f2-c7e5-a7de-692a779ec2b0">
-            <Action_id>1</Action_id>
+            <Action_id>2</Action_id>
             <Step_name>Add to FFMpeg queue</Step_name>
             <Step_type>QueueStager</Step_type>
             <Version>0.7.2</Version>
@@ -90,7 +90,7 @@
                 <Map_to type="parameter" name="media_file_path" />
               </Input>
               <Input name="Priority">
-                <Map_to type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+                <Map_to type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
                 <Processing>input_value=input_value.to_i</Processing>
               </Input>
             </Inputs>
@@ -104,7 +104,7 @@
               <Carry_thru type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               <Carry_thru type="output" name="file_size" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
-              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
             </Outputs>
             <comments>--- {}
 
@@ -112,7 +112,7 @@
             <weight>0</weight>
           </Step>
           <Step x="679" y="149" id="c43be8dc-7197-f80a-b229-77f1f19486bd">
-            <Action_id>1</Action_id>
+            <Action_id>2</Action_id>
             <Step_name>create proxy</Step_name>
             <Step_type>FfmpgTranscoding</Step_type>
             <Timeout>0</Timeout>
@@ -142,8 +142,8 @@
               <Output name="transformation_report" />
               <Output name="Result_file_path" />
               <Output name="Step_information" />
-              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
-              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="4" step_name="Wait for FFMPEG transcoder" />
             </Outputs>
             <comments>--- {}
 
@@ -151,7 +151,7 @@
             <weight>0</weight>
           </Step>
           <Step x="129" y="9" id="bf42452d-5080-169c-b7d2-f4c3e060294b">
-            <Action_id>1</Action_id>
+            <Action_id>2</Action_id>
             <Step_name>Transcoding profile</Step_name>
             <Step_type>SimpleParameterLookup</Step_type>
             <Version>{}</Version>
@@ -190,7 +190,7 @@
             <weight>0</weight>
           </Step>
           <Step x="519" y="149" id="71a6a6dc-ccd0-810d-2401-40611d3a7e04">
-            <Action_id>2</Action_id>
+            <Action_id>3</Action_id>
             <Step_name>Transcode</Step_name>
             <Step_type>FfmpgTranscoding</Step_type>
             <Timeout>0</Timeout>
@@ -216,17 +216,17 @@
                 <Map_to type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               </Input>
               <Input name="Options">
-                <Map_to type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+                <Map_to type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
               </Input>
             </Inputs>
             <Outputs>
               <Output name="transformation_report" />
               <Output name="Result_file_path" />
               <Output name="Step_information" />
-              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
               <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               <Carry_thru type="parameter" name="media_file_path" />
-              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="4" step_name="Wait for FFMPEG transcoder" />
             </Outputs>
             <comments>--- {}
 
@@ -234,7 +234,7 @@
             <weight>0</weight>
           </Step>
           <Step x="839" y="289" id="e3bb3240-9c62-747d-f9da-8fb996b95afa">
-            <Action_id>2</Action_id>
+            <Action_id>3</Action_id>
             <Step_name>Release if errors</Step_name>
             <Step_type>LoadManager</Step_type>
             <Version>{}</Version>
@@ -248,7 +248,7 @@
             <Parameters></Parameters>
             <Inputs>
               <Input name="Allocation_token_to_release">
-                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="4" step_name="Wait for FFMPEG transcoder" />
               </Input>
             </Inputs>
             <Outputs>
@@ -278,7 +278,7 @@
                 <Map_to type="parameter" name="media_file_path" />
               </Input>
               <Input name="target_extension">
-                <Map_to type="output" name="Target Extension" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+                <Map_to type="output" name="Target Extension" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
               </Input>
             </Inputs>
             <Outputs>
@@ -287,8 +287,8 @@
               <Output name="file_size" />
               <Output name="Step_information" />
               <Carry_thru type="parameter" name="media_file_path" />
-              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
-              <Carry_thru type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
+              <Carry_thru type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
             </Outputs>
             <comments>--- {}
 
@@ -296,7 +296,7 @@
             <weight>0</weight>
           </Step>
           <Step x="739" y="9" id="1a190462-ee8f-09c4-b22b-0653d00de43b">
-            <Action_id>3</Action_id>
+            <Action_id>4</Action_id>
             <Step_name>Wait for FFMPEG transcoder</Step_name>
             <Step_type>LoadManager</Step_type>
             <Version>0.3.0</Version>
@@ -307,7 +307,7 @@
             <Parameters></Parameters>
             <Inputs>
               <Input name="Expected_queued_item">
-                <Map_to type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+                <Map_to type="output" name="Queued_item" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
               </Input>
             </Inputs>
             <Outputs>
@@ -317,12 +317,12 @@
               <Output name="Resource_reserved" />
               <Output name="Step_information" />
               <Output name="Queued_item_description" />
-              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="2" step_name="Transcoding profile" />
               <Carry_thru type="parameter" name="media_file_path" />
-              <Carry_thru type="output" name="Queue_ID" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
-              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
-              <Carry_thru type="output" name="Queued_item_description" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
-              <Carry_thru type="output" name="Step_information" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queue_ID" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queued_item_description" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Step_information" step_type="QueueStager" action_id="2" step_name="Add to FFMpeg queue" />
               <Carry_thru type="output" name="file_size" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
               <Carry_thru type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
@@ -353,43 +353,18 @@
         </Parameters>
         <Notes></Notes>
       </opt>
-    id: 10
-    workflow_id: 2
+    id: 5
+    workflow_id: 3
     error_free: 1
     created_by: 1
     revision_id: 17
-    created_at: 2020-06-11 05:33:03.000000000 Z
-    updated_at: 2020-06-11 05:33:03.000000000 Z
+    created_at: 2020-06-15 08:10:47.000000000 Z
+    updated_at: 2020-06-15 08:10:47.000000000 Z
     revisions_log: 
-- LoadManager__1: !ruby/object:LoadManager
-    attributes:
-      id: 1
-      name: W2__Release FFMPEG transcoder
-      comments: ''
-      max_resources: 
-      resource_capacity: 
-      resource_list: ''
-      allocation_block: 
-      unique_id: ''
-      unicity_type: absolute
-      polling_frequency: 
-      keep_ongoing: 0
-      resource_wait_timeout: 
-      resource_hold_timeout: 
-      queue_id: ''
-      use_weight_for_allocation: 0
-      on_wait_timeout: Fail
-      manager_action: Release
-      allocation_label: ''
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
-      is_adhoc: 1
-      pool_name: ''
-      allocation_policy: 
-  LoadManager__2: !ruby/object:LoadManager
+- LoadManager__2: !ruby/object:LoadManager
     attributes:
       id: 2
-      name: W2__Release if errors
+      name: W3__Release FFMPEG transcoder
       comments: ''
       max_resources: 
       resource_capacity: 
@@ -406,15 +381,40 @@
       on_wait_timeout: Fail
       manager_action: Release
       allocation_label: ''
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       is_adhoc: 1
-      pool_name: 
+      pool_name: ''
       allocation_policy: 
   LoadManager__3: !ruby/object:LoadManager
     attributes:
       id: 3
-      name: W2__Wait for FFMPEG transcoder
+      name: W3__Release if errors
+      comments: ''
+      max_resources: 
+      resource_capacity: 
+      resource_list: ''
+      allocation_block: 
+      unique_id: ''
+      unicity_type: absolute
+      polling_frequency: 
+      keep_ongoing: 0
+      resource_wait_timeout: 
+      resource_hold_timeout: 
+      queue_id: ''
+      use_weight_for_allocation: 0
+      on_wait_timeout: Fail
+      manager_action: Release
+      allocation_label: ''
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
+      is_adhoc: 1
+      pool_name: 
+      allocation_policy: 
+  LoadManager__4: !ruby/object:LoadManager
+    attributes:
+      id: 4
+      name: W3__Wait for FFMPEG transcoder
       comments: ''
       max_resources: 2
       resource_capacity: 3
@@ -431,15 +431,15 @@
       on_wait_timeout: Fail
       manager_action: Reserve
       allocation_label: ''
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       is_adhoc: 1
       pool_name: ''
       allocation_policy: 
-  QueueStager__1: !ruby/object:QueueStager
+  QueueStager__2: !ruby/object:QueueStager
     attributes:
-      id: 1
-      name: W2__Add to FFMpeg queue
+      id: 2
+      name: W3__Add to FFMpeg queue
       comments: ''
       queue_name: ffmpeg_transcoding_queue
       queued_item: "<%=file_path%>"
@@ -451,17 +451,17 @@
       adhoc_queue: 0
       operation: Add
       keep_ongoing: 0
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       weight: 0
       lifetime: WorkOrder
       max_item_count: 
       omit_description: 0
-  FfmpgTranscoding__1: !ruby/object:FfmpgTranscoding
+  FfmpgTranscoding__2: !ruby/object:FfmpgTranscoding
     attributes:
-      execution_node: localhost_new_20200610223301
-      id: 1
-      name: W2__create proxy
+      execution_node: localhost_new_20200615011047
+      id: 2
+      name: W3__create proxy
       comments: Creates a low res version of the incoming media file to use as proxy.
       execution_login: 
       execution_password: 
@@ -470,18 +470,18 @@
       output_file_path: ''
       force_file_format: 
       options: "-r 25 -s 640X480 -y -strict experimental"
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       overwrite_output: 0
       post_path_parameters: ''
       is_manual_command: 0
       manual_command: ''
       execution_on_windoz: 
-  FfmpgTranscoding__2: !ruby/object:FfmpgTranscoding
+  FfmpgTranscoding__3: !ruby/object:FfmpgTranscoding
     attributes:
-      execution_node: localhost_new_20200610223301
-      id: 2
-      name: W2__Transcode
+      execution_node: localhost_new_20200615011047
+      id: 3
+      name: W3__Transcode
       comments: ''
       execution_login: 
       execution_password: 
@@ -490,16 +490,16 @@
       output_file_path: ''
       force_file_format: 
       options: ''
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       overwrite_output: 0
       post_path_parameters: ''
       is_manual_command: 0
       manual_command: ''
       execution_on_windoz: 
-  SimpleParameterLookup__1: !ruby/object:SimpleParameterLookup
+  SimpleParameterLookup__2: !ruby/object:SimpleParameterLookup
     attributes:
-      id: 1
+      id: 2
       name: ffmpeg transcoding profile
       paramFileName: ''
       parametersAssociations: |-
@@ -511,8 +511,8 @@
         zzz:::qqq:::sss:::dddd
       mappingParameters: 
       case_sensitive: 0
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       strip_spaces: 0
       disable_glob: 0
       disable_regex: 0
@@ -532,8 +532,8 @@
       validateInputs_code: ''
       outputsSpec_code: ''
       inputsSpec_code: ''
-      created_at: 2020-06-11 05:33:03.000000000 Z
-      updated_at: 2020-06-11 05:33:03.000000000 Z
+      created_at: 2020-06-15 08:10:47.000000000 Z
+      updated_at: 2020-06-15 08:10:47.000000000 Z
       mandatoryInputs: "{'media_file_path'=>'string', 'target_extension'=>'string'}"
       optionalInputs: ''
       typedOutputs: "{'proxy_file_path'=>'string', 'target_file_path'=>'string', 'file_size'=>'int'}"
@@ -546,23 +546,23 @@
       github_hostname: 
       verify_ssl: 1
       use_cached: 0
-- LoadManager__1: []
-  LoadManager__2: []
+- LoadManager__2: []
   LoadManager__3: []
-  QueueStager__1: []
-  FfmpgTranscoding__1:
-  - :entity: RemoteNode
-    :id_key: name
-    :id_value: localhost_new_20200610223301
-    :dependent_field: execution_node
+  LoadManager__4: []
+  QueueStager__2: []
   FfmpgTranscoding__2:
   - :entity: RemoteNode
     :id_key: name
-    :id_value: localhost_new_20200610223301
+    :id_value: localhost_new_20200615011047
     :dependent_field: execution_node
-  SimpleParameterLookup__1: []
+  FfmpgTranscoding__3:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost_new_20200615011047
+    :dependent_field: execution_node
+  SimpleParameterLookup__2: []
   CustomRuby__3: []
-- RemoteNode__name__localhost_new_20200610223301: "/tmp/Incoming asset processing/20200615_014428/20200615_014428/Remote_nodelocalhost_new_20200610223301.node"
+- RemoteNode__name__localhost_new_20200615011047: "/tmp/Incoming asset processing/20200615_022804/20200615_022805/Remote_nodelocalhost_new_20200615011047.node"
 - LoadManager: 0.4.4
   QueueStager: 0.7.2
   FfmpgTranscoding: 0.5.0
