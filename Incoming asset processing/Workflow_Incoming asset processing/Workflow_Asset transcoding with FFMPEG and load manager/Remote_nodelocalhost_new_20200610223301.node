@@ -1,0 +1,32 @@
+---
+- !ruby/object:RemoteNode
+  attributes:
+    name: localhost_new_20200610223301
+    id: 2
+    comments: Node imported successfully.
+    address: 127.0.0.1
+    port: 
+    login: root
+    password: ''
+    certificate_location: "/root/.ssh/id_dsa_eudemo"
+    aspera_dir: 
+    orchestrator_dir: 
+    ruby_executable: 
+    os: linux
+    platform: 'Linux 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018
+      x86_64 x86_64 x86_64 GNU/Linux'
+    plugin_execution: 
+    created_at: 2020-06-11 05:33:01.000000000 Z
+    updated_at: 2020-06-11 05:33:01.000000000 Z
+    secondary_address: ''
+    ports_to_scan: ''
+    displayed_name: ''
+    node_type: Aspera FASP
+    fasp_port: 
+    balancing_type: Primary/Secondary
+    keepalive_port: 443
+    round_robiner: 0
+    node_attributes: "--- {}\n\n"
+    orch_login: ''
+    orch_api_key: ''
+    orch_web_root: aspera/orchestrator/

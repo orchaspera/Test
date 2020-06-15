@@ -1,0 +1,714 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    id: 3
+    name: Incoming asset processing
+    portable_id: 9c379e80-6392-0133-8e37-063966335dd0
+    generatedFrom: 39
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Incoming_asset_processing__3326.wkf
+    revision_id: 96
+    created_by: 1
+    run_as: OPERATOR
+    created_at: 2020-06-11 05:33:07.000000000 Z
+    updated_at: 2020-06-15 07:22:51.000000000 Z
+    folder_id: 0
+    description: "Manages a new incoming asset. An asset in this case is an XML file
+      referencing a media file and specifying additional metadata.\r\nIt performs
+      transcoding, encryption and delivery to final destination with multiple protocols."
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Incoming asset processing|96
+    templates: 
+    user_lock: 0
+    locked_by: 1
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <Workflow id="3">
+      <Start x="9" y="19" id="22ef9772-611a-e1a1-2015-045ccbe8ca52">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites><Parameters></Parameters></Start>
+      <Error x="1291" y="291" id="7f328d8b-5e8c-0b5d-2baa-0401a7bb4594">
+      <Synch_factor>0</Synch_factor><Prerequisites></Prerequisites></Error>
+      <End x="1311" y="411" id="24848e0c-1e16-07c7-0593-f7a814920f4e">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='8fb74ca8-2227-c9da-99b8-17a71cb9e842' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></End>
+      <Fail x="821" y="641" id="b0fc28fb-eca6-add1-257b-d865cf4dbbd4">
+      <Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='11ccf671-ec2f-b499-d4b8-7a36f6f2ce18' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites></Fail>
+      <Steps><Step x="781" y="391" id="778e7321-2af1-2c06-76e7-a66d15a02e7f">
+      <Action_id>5</Action_id><Step_name>All temp files to delete</Step_name><Step_type>CustomRuby</Step_type><Version>0.4.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='7dd2458f-2179-1ad6-63b9-dad0fdbe32a6' status='Complete' router='draw2d.BezierConnectionRouter' /><Prerequisite id='6b3aea01-e502-c82b-360f-f28c1945d699' status='Complete' router='draw2d.BezierConnectionRouter' /><Prerequisite id='f125a3d8-7db6-1ccd-0c26-11fe763f0392' status='Complete' router='draw2d.BezierConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='metadata_file_path'><Map_to type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='media_file_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='pgp_file_path'><Map_to type='output' name='processed_file_path' step_type='SymantecPgp' action_id='1' step_name='Encrypt Hi-Res' /></Input><Input name='proxy_file_path'><Map_to type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input><Input name='transcoded_file_path'><Map_to type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input></Inputs><Outputs><Output name='all_files_to_delete'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="1171" y="141" id="3157649d-cd30-f2b7-41d3-c933a2e79efe">
+      <Action_id>2</Action_id><Step_name>check rejection</Step_name><Step_type>Filter</Step_type><Version>{}</Version><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>86400</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='cb6089fb-4859-f753-41df-541e59ee109c' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='rejected'><Map_to type='output' name='rejected' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='file_name'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='FilterResult'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Target' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='date_start' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='date_stop' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='final_media_path' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='description' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='final_metadata_path' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='final_proxy_path' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='profile_out' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='rejected' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='source_out' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='target_out' step_type='UserInput' action_id='1' step_name='user task' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="671" y="11" id="47249452-eb76-5d7f-dd03-c7386e25ee53">
+      <Action_id>1</Action_id><Step_name>Log ingested</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='75a2ca42-eeeb-16f6-60ef-7bb69b3dbe98' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='output' name='FileName' step_type='LocalFileWatcher' action_id='2' step_name='Wait for media file' /></Input></Inputs><Outputs><Output name='actual_file'></Output><Output name='journal_file_ID'></Output><Output name='actual_path'></Output><Output name='Step_information'></Output><Output name='actual_package_ID'></Output><Carry_thru type='output' name='FileName' step_type='LocalFileWatcher' action_id='2' step_name='Wait for media file' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Step_information' step_type='LocalFileWatcher' action_id='2' step_name='Wait for media file' /><Carry_thru type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='combined_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="181" y="11" id="b845840c-9637-beaf-cc57-6bc24d669b91">
+      <Action_id>7</Action_id><Step_name>Parse metadata</Step_name><Step_type>CustomRuby</Step_type><Version>0.4.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='22ef9772-611a-e1a1-2015-045ccbe8ca52' status='true' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters><Parameter id='484d3176-1f55-25ae-6388-4ed9b2e41fe5' router='draw2d.ManhattanConnectionRouter' /></Parameters><Inputs><Input name='xml_file_path'><Map_to type='parameter' name='xml_file_path' /></Input></Inputs><Outputs><Output name='profile'></Output><Output name='media_file_path'></Output><Output name='media_file_name'></Output><Output name='target'></Output><Output name='source'></Output><Output name='base_path'></Output><Output name='xml_transformed_path'></Output><Output name='combined_path'></Output><Output name='contact_email'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /></Outputs><comments>--- {}
+
+      </comments><weight>10</weight></Step>
+      <Step x="609" y="289" id="7dd2458f-2179-1ad6-63b9-dad0fdbe32a6">
+      <Action_id>1</Action_id><Step_name>Transfer Hi-Res file</Step_name><Step_type>ScpTransfer</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='b01776a3-7668-87f8-ff25-f2f2b3b252aa' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='Remote_path'><Map_to type='output' name='final_media_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /></Input><Input name='media_file_path'><Map_to type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input></Inputs><Outputs><Output name='Transferred_bytes'></Output><Output name='Transferred_files'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='processed_file_path' step_type='SymantecPgp' action_id='1' step_name='Encrypt Hi-Res' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="881" y="141" id="2f3ee662-e7b4-fc73-3463-021814bd9788">
+      <Action_id>1</Action_id><Step_name>path conversion</Step_name><Step_type>ConvertPath</Step_type><Version>0.1.2</Version><Synch_factor  x="771" y="151">1</Synch_factor><Prerequisites><Prerequisite id='485665e5-290c-35bf-93a3-9ce38dda61fa' status='Failed' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='485665e5-290c-35bf-93a3-9ce38dda61fa' status='Error' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters><Parameter id='814d27bb-97db-fef9-e99e-f09044389800' router='draw2d.ManhattanConnectionRouter' /></Parameters><Inputs><Input name='local_address'><Map_to type='parameter' name='local_address' /></Input><Input name='filepath'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='output_file_path'></Output><Output name='output_file_nakeddir'></Output><Output name='output_file_basename'></Output><Output name='output_file_extension'></Output><Output name='output_file_nakedname'></Output><Output name='output_file_dirname'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Target' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='combined_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="461" y="411" id="b01776a3-7668-87f8-ff25-f2f2b3b252aa">
+      <Action_id>2</Action_id><Step_name>Log encrypted</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor  x="420" y="540">1</Synch_factor><Prerequisites><Prerequisite id='f40da93e-d79c-a1f4-1d23-47f7e3e53ed2' status='Complete' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='f40da93e-d79c-a1f4-1d23-47f7e3e53ed2' status='Failed' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='f40da93e-d79c-a1f4-1d23-47f7e3e53ed2' status='Error' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='actual_file'></Output><Output name='journal_file_ID'></Output><Output name='actual_path'></Output><Output name='Step_information'></Output><Output name='actual_package_ID'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Step_information' step_type='SymantecPgp' action_id='1' step_name='Encrypt Hi-Res' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='final_media_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_metadata_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_proxy_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='passphrase' step_type='SymantecPgp' action_id='1' step_name='Encrypt Hi-Res' /><Carry_thru type='output' name='processed_file_path' step_type='SymantecPgp' action_id='1' step_name='Encrypt Hi-Res' /><Carry_thru type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='source' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='target' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="401" y="631" id="f40938b3-6587-c44a-883f-e14657350f06">
+      <Action_id>1</Action_id><Step_name>Failure notification</Step_name><Step_type>EmailNotification</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='3eab916e-f8b5-973d-1130-ce5a0c11876f' status='Failed' router='draw2d.BezierConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='To'><Map_to type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='xml_file_path'><Map_to type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='asset_file_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='profile'><Map_to type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /></Input><Input name='source'><Map_to type='output' name='source' step_type='MergePoint' action_id='1' step_name='merge data' /></Input><Input name='target'><Map_to type='output' name='target' step_type='MergePoint' action_id='1' step_name='merge data' /></Input></Inputs><Outputs><Output name='FullMessage'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="299" y="409" id="f40da93e-d79c-a1f4-1d23-47f7e3e53ed2">
+      <Action_id>1</Action_id><Step_name>Encrypt Hi-Res</Step_name><Step_type>SymantecPgp</Step_type><Version>{}</Version><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>86400</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>86400</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='a29aae99-df00-b196-7449-ff7bdddfb76e' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='media_file_path'><Map_to type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input></Inputs><Outputs><Output name='processed_file_path'></Output><Output name='passphrase'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='final_media_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_metadata_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_proxy_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='source' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='target' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="171" y="411" id="a29aae99-df00-b196-7449-ff7bdddfb76e">
+      <Action_id>3</Action_id><Step_name>Log transcoded</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='3eab916e-f8b5-973d-1130-ce5a0c11876f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input></Inputs><Outputs><Output name='actual_file'></Output><Output name='journal_file_ID'></Output><Output name='actual_path'></Output><Output name='Step_information'></Output><Output name='actual_package_ID'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Step_information' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='Sub-Workflow_workorder_ID' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='Target' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='final_media_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_metadata_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_proxy_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='source' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='target' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='transcoded_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="981" y="691" id="8b9e8c53-a18b-2b89-a4b5-71811f46d022">
+      <Action_id>2</Action_id><Step_name>confirm delivery</Step_name><Step_type>EmailNotification</Step_type><Version>0.5.4</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='778e7321-2af1-2c06-76e7-a66d15a02e7f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='file_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='To'><Map_to type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='FullMessage'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="609" y="489" id="f125a3d8-7db6-1ccd-0c26-11fe763f0392">
+      <Action_id>2</Action_id><Step_name>Transfer Proxy file</Step_name><Step_type>ScpTransfer</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='b01776a3-7668-87f8-ff25-f2f2b3b252aa' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='Local_path'><Map_to type='output' name='proxy_file_path' step_type='SubWorkflow' action_id='2' step_name='Asset transcoding' /></Input><Input name='Remote_path'><Map_to type='output' name='final_proxy_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /></Input></Inputs><Outputs><Output name='Transferred_bytes'></Output><Output name='Transferred_files'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="981" y="401" id="6ff19370-e9b7-8b7f-5a8b-b80ab2c758c4">
+      <Action_id>2</Action_id><Step_name>Delete temp files</Step_name><Step_type>LocalFileOperation</Step_type><Version>1.0.0</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='778e7321-2af1-2c06-76e7-a66d15a02e7f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='source'><Map_to type='output' name='all_files_to_delete' step_type='CustomRuby' action_id='5' step_name='All temp files to delete' /></Input></Inputs><Outputs><Output name='File_list'></Output><Output name='Failed_list'></Output><Output name='Step_information'></Output></Outputs><comments>--- {}
+
+      </comments><weight>100</weight></Step>
+      <Step x="501" y="11" id="75a2ca42-eeeb-16f6-60ef-7bb69b3dbe98">
+      <Action_id>2</Action_id><Step_name>Wait for media file</Step_name><Step_type>LocalFileWatcher</Step_type><Version>1.7.7</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='2a8d1e52-9303-5034-21e2-e1c2e4ceae53' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='directory'><Map_to type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='fileName'><Map_to type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='FileName'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='combined_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>30</weight></Step>
+      <Step x="671" y="631" id="11ccf671-ec2f-b499-d4b8-7a36f6f2ce18">
+      <Action_id>4</Action_id><Step_name>Log error</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>{}</Version><Synch_factor  x="571" y="651">1</Synch_factor><Prerequisites><Prerequisite id='f40938b3-6587-c44a-883f-e14657350f06' status='Complete' router='draw2d.BezierConnectionRouter' /><Prerequisite id='3157649d-cd30-f2b7-41d3-c933a2e79efe' status='Failed' router='draw2d.BezierConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='actual_file'></Output><Output name='actual_path'></Output><Output name='actual_package_ID'></Output><Output name='journal_file_ID'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="981" y="271" id="b0a2172b-0d7e-9892-b553-5c9f2ac3d0d0">
+      <Action_id>5</Action_id><Step_name>Log media process complete</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='778e7321-2af1-2c06-76e7-a66d15a02e7f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='File_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='actual_file'></Output><Output name='actual_path'></Output><Output name='actual_package_ID'></Output><Output name='journal_file_ID'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="609" y="389" id="6b3aea01-e502-c82b-360f-f28c1945d699">
+      <Action_id>3</Action_id><Step_name>Transfer Metadata</Step_name><Step_type>ScpTransfer</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='b01776a3-7668-87f8-ff25-f2f2b3b252aa' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='Local_path'><Map_to type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='Remote_path'><Map_to type='output' name='final_metadata_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /></Input></Inputs><Outputs><Output name='Transferred_bytes'></Output><Output name='Transferred_files'></Output><Output name='Step_information'></Output><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="831" y="11" id="485665e5-290c-35bf-93a3-9ce38dda61fa">
+      <Action_id>2</Action_id><Step_name>Target folders</Step_name><Step_type>SimpleParameterLookup</Step_type><Version>{}</Version><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>86400</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Error_attempts>1</Error_attempts><Error_retryFor>0</Error_retryFor><Error_retryForUnit>86400</Error_retryForUnit><Error_retryDelay>0</Error_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='47249452-eb76-5d7f-dd03-c7386e25ee53' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='Target'><Map_to type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='Proxy file final path'></Output><Output name='Media file final path'></Output><Output name='ColumnValues'></Output><Output name='Metadata file final path'></Output><Output name='Target'></Output><Output name='IndexedTable'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='FileName' step_type='LocalFileWatcher' action_id='2' step_name='Wait for media file' /><Carry_thru type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='combined_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="1249" y="9" id="105a5480-21cc-479f-ab50-456336780db9">
+      <Action_id>1</Action_id><Step_name>merge data</Step_name><Step_type>MergePoint</Step_type><Version>{}</Version><Synch_factor  x="1151" y="31">1</Synch_factor><Prerequisites><Prerequisite id='485665e5-290c-35bf-93a3-9ce38dda61fa' status='Complete' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='3157649d-cd30-f2b7-41d3-c933a2e79efe' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='profile'><Map_to type='output' name='profile_out' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='profile_alternate'><Map_to type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='final_media_file_path'><Map_to type='output' name='final_media_path' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='final_media_file_path_alternate'><Map_to type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /></Input><Input name='final_proxy_file_path'><Map_to type='output' name='final_proxy_path' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='final_proxy_file_path_alternate'><Map_to type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /></Input><Input name='final_metadata_file_path'><Map_to type='output' name='final_metadata_path' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='final_metadata_file_path_alternate'><Map_to type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /></Input><Input name='source'><Map_to type='output' name='source_out' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='source_alternate'><Map_to type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='target'><Map_to type='output' name='target_out' step_type='UserInput' action_id='1' step_name='user task' /></Input><Input name='target_alternate'><Map_to type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='final_metadata_file_path'></Output><Output name='profile'></Output><Output name='final_proxy_file_path'></Output><Output name='final_media_file_path'></Output><Output name='target'></Output><Output name='source'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="19" y="409" id="3eab916e-f8b5-973d-1130-ce5a0c11876f">
+      <Action_id>2</Action_id><Step_name>Asset transcoding</Step_name><Step_type>SubWorkflow</Step_type><Version>{}</Version><Failed_attempts>1</Failed_attempts><Failed_retryFor>0</Failed_retryFor><Failed_retryForUnit>86400</Failed_retryForUnit><Failed_retryDelay>0</Failed_retryDelay><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='105a5480-21cc-479f-ab50-456336780db9' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='media_file_path'><Map_to type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='profile'><Map_to type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /></Input></Inputs><Outputs><Output name='proxy_file_path'></Output><Output name='transcoded_file_path'></Output><Output name='Step_information'></Output><Output name='Sub-Workflow_workorder_ID'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Target' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='final_media_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_metadata_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='final_proxy_file_path' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='profile' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='source' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='target' step_type='MergePoint' action_id='1' step_name='merge data' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>80</weight></Step>
+      <Step x="1031" y="141" id="cb6089fb-4859-f753-41df-541e59ee109c">
+      <Action_id>1</Action_id><Step_name>user task</Step_name><Step_type>UserInput</Step_type><Version>{}</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='2f3ee662-e7b4-fc73-3463-021814bd9788' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='media_file_path'><Map_to type='output' name='output_file_path' step_type='ConvertPath' action_id='1' step_name='path conversion' /></Input><Input name='profile'><Map_to type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='source'><Map_to type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input><Input name='target'><Map_to type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='final_media_path'></Output><Output name='target_out'></Output><Output name='final_metadata_path'></Output><Output name='final_proxy_path'></Output><Output name='source_out'></Output><Output name='InputProvider'></Output><Output name='profile_out'></Output><Output name='description'></Output><Output name='date_start'></Output><Output name='date_stop'></Output><Output name='rejected'></Output><Output name='Step_information'></Output><Output name='First name'></Output><Output name='Last name'></Output><Output name='Orchestrator login'></Output><Output name='Email address'></Output><Output name='Alternate email addresses'></Output><Output name='Full name'></Output><Carry_thru type='output' name='Media file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Proxy file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Target' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='Metadata file final path' step_type='SimpleParameterLookup' action_id='2' step_name='Target folders' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>--- {}
+
+      </comments><weight>0</weight></Step>
+      <Step x="981" y="541" id="7fe34c10-ea45-9e26-3c9f-a0fc99d118fe">
+      <Action_id>1</Action_id><Step_name>Delete xml on transfer server</Step_name><Step_type>RemoteFileOperation</Step_type><Version>0.2.7</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='778e7321-2af1-2c06-76e7-a66d15a02e7f' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters><Parameter id='6e771c3d-58e9-ff08-b93e-d4ab0da40361' router='draw2d.ManhattanConnectionRouter' /></Parameters><Inputs><Input name='remote_node'><Map_to type='parameter' name='remote_node' /></Input><Input name='source'><Map_to type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="341" y="11" id="2a8d1e52-9303-5034-21e2-e1c2e4ceae53">
+      <Action_id>6</Action_id><Step_name>Log parsed</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='b845840c-9637-beaf-cc57-6bc24d669b91' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='xml_file_path'><Map_to type='parameter' name='xml_file_path' /></Input></Inputs><Outputs><Output name='actual_package_ID'></Output><Output name='actual_file'></Output><Output name='actual_path'></Output><Output name='journal_file_ID'></Output><Output name='Step_information'></Output><Carry_thru type='parameter' name='xml_file_path' /><Carry_thru type='output' name='Step_information' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='base_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='combined_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='contact_email' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_name' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='media_file_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='profile' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='source' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='target' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /><Carry_thru type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Outputs><comments>{}</comments><weight>0</weight></Step>
+      <Step x="1171" y="401" id="8fb74ca8-2227-c9da-99b8-17a71cb9e842">
+      <Action_id>7</Action_id><Step_name>Log xml process complete</Step_name><Step_type>FileJournalLogEntry</Step_type><Version>0.2.2</Version><Synch_factor>0</Synch_factor><Prerequisites><Prerequisite id='6ff19370-e9b7-8b7f-5a8b-b80ab2c758c4' status='Complete' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='b0a2172b-0d7e-9892-b553-5c9f2ac3d0d0' status='Complete' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='7fe34c10-ea45-9e26-3c9f-a0fc99d118fe' status='Complete' router='draw2d.ManhattanConnectionRouter' /><Prerequisite id='8b9e8c53-a18b-2b89-a4b5-71811f46d022' status='Complete' router='draw2d.ManhattanConnectionRouter' /></Prerequisites><Parameters></Parameters><Inputs><Input name='xml_file_path'><Map_to type='output' name='xml_transformed_path' step_type='CustomRuby' action_id='7' step_name='Parse metadata' /></Input></Inputs><Outputs><Output name='actual_package_ID'></Output><Output name='actual_file'></Output><Output name='actual_path'></Output><Output name='journal_file_ID'></Output><Output name='Step_information'></Output></Outputs><comments>{}</comments><weight>0</weight></Step>
+      </Steps><Parameters><Parameter x="19" y="119" id="484d3176-1f55-25ae-6388-4ed9b2e41fe5">
+      <Value>undefined</Value><Value_type>string</Value_type><Name>xml_file_path</Name><Runtime_override>true</Runtime_override><Runtime_optional>false</Runtime_optional><Comments>{}</Comments></Parameter>
+      <Parameter x="771" y="271" id="814d27bb-97db-fef9-e99e-f09044389800">
+      <Value>{}</Value><Value_type>string</Value_type><Name>local_address</Name><Runtime_override>true</Runtime_override><Runtime_optional>false</Runtime_optional><Comments>{}</Comments></Parameter>
+      <Parameter x="801" y="531" id="6e771c3d-58e9-ff08-b93e-d4ab0da40361">
+      <Value>localhost</Value><Value_type>string</Value_type><Name>remote_node</Name><Runtime_override>true</Runtime_override><Runtime_optional>true</Runtime_optional><Comments>{}</Comments></Parameter>
+      </Parameters><Notes></Notes></Workflow>
+    id: 39
+    workflow_id: 3
+    error_free: 1
+    created_by: 1
+    revision_id: 96
+    created_at: 2020-06-15 07:22:43.000000000 Z
+    updated_at: 2020-06-15 07:22:44.000000000 Z
+    revisions_log: 
+- CustomRuby__5: !ruby/object:CustomRuby
+    attributes:
+      id: 5
+      name: W3__All temp files to delete_1
+      comments: Builds the list of files to delete
+      execute_code: |-
+        outputs['all_files_to_delete']=[inputs['proxy_file_path'],
+        inputs['pgp_file_path'],
+        inputs['transcoded_file_path']]
+        #inputs['metadata_file_path']]
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      mandatoryInputs: "{'proxy_file_path'=>'string', 'media_file_path'=>'string',
+        'metadata_file_path'=>'string', 'pgp_file_path'=>'string', 'transcoded_file_path'=>'string'}"
+      optionalInputs: ''
+      typedOutputs: "{'all_files_to_delete'=>'array'}"
+      use_code_from_github: 0
+      github_token: Emilie123_
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: 
+      verify_ssl: 1
+      use_cached: 0
+  CustomRuby__7: !ruby/object:CustomRuby
+    attributes:
+      id: 7
+      name: ffmpeg parse metadata_1
+      comments: Parses the xml file to retrieve all specified metadata.
+      execute_code: |-
+        xml_file_path = inputs['xml_file_path']
+
+        filepath=xml_file_path
+        filename=File.basename(filepath)
+        package=File.nakedname(filename)
+
+        #base_dir = '/opt/aspera/demos/vodmanager'
+        base_dir = File.dirname(xml_file_path)
+        xml_transformed_file_path = File.join(base_dir,filename)
+        xml_structure = XmlSimple.xml_in xml_transformed_file_path
+        media_file_name = xml_structure['File'][0] rescue nil
+        media_file_path = File.join(base_dir,media_file_name)
+        outputs['combined_path'] = media_file_path + ',' + xml_file_path
+
+        outputs['contact_email']=xml_structure['Contact'][0] rescue nil
+        outputs['contact_email']="christophe@asperasoft.com" if outputs['contact_email'].nil?
+        outputs['source']=xml_structure['Source'][0] rescue nil
+        outputs['profile']=xml_structure['Profile'][0] rescue nil
+        outputs['target']=xml_structure['Target'][0] rescue nil
+        outputs['media_file_name']=media_file_name
+        outputs['base_path']=base_dir
+        outputs['media_file_path']=media_file_path
+        outputs['xml_transformed_path']=xml_transformed_file_path
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      mandatoryInputs: "{'xml_file_path'=>'string'}"
+      optionalInputs: "{}"
+      typedOutputs: "{'combined_path'=>'string', 'profile'=>'string', 'xml_transformed_path'=>'string',
+        'media_file_path'=>'string', 'target'=>'string', 'media_file_name'=>'string',
+        'source'=>'string', 'contact_email'=>'string', 'base_path'=>'string'}"
+      use_code_from_github: 0
+      github_token: Emilie123_
+      github_repo: ''
+      github_file_path: ''
+      github_branch_name: ''
+      github_user_name: ''
+      github_hostname: 
+      verify_ssl: 1
+      use_cached: 0
+  Filter__2: !ruby/object:Filter
+    attributes:
+      id: 2
+      name: W3__check rejection_1
+      comments: ''
+      command: "if inputs['rejected'] == \"true\"\n  #filepath=inputs['file_name']\n
+        \ #filename=File.basename(filepath)\n  #package=File.nakedname(filename)\n\n
+        \ #journal_params= {:state_id=>state_id, :package=>package}\n  #journal_params[:event]='Manually
+        discarded'\n\n  #Journaler.log_fail({:file=>filename, :file_path=>filepath},
+        journal_params)  \n\n  #Journaler.log_fail({:file=>filename.gsub(\".mxf\",\".xml\"),
+        :file_path=>filepath.gsub(\".mxf\",\".xml\")}, journal_params)\n  return false\nelse\n
+        \  return true   \nend"
+      mandatoryInputs: "{'file_name'=>'string', 'rejected'=>'string'}"
+      optionalInputs: ''
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      filterOutputs: ''
+  FileJournalLogEntry__1: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 1
+      name: W3__Log ingested_1
+      comments: ''
+      file: "<%=File.basename(File_path)%>"
+      file_path: "<%=File_path%>"
+      package: "<%=File.nakedname(File_path)%>"
+      step_name: Wait for media file
+      processing_status: ''
+      event: Ingested
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 30
+  FileJournalLogEntry__2: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 2
+      name: W3__Log encrypted_1
+      comments: ''
+      file: "<%=File.basename(File_path)%>"
+      file_path: "<%=File_path%>"
+      package: "<%=File.nakedname(File_path)%>"
+      step_name: Encrypt Hi-Res
+      processing_status: ''
+      event: Encrypted
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 90
+  FileJournalLogEntry__3: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 3
+      name: W3__Log transcoded_1
+      comments: ''
+      file: "<%=File.basename(File_path)%>"
+      file_path: "<%=File_path%>"
+      package: "<%=File.nakedname(File_path)%>"
+      step_name: Asset transcoding done
+      processing_status: ''
+      event: Transcoded
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 80
+  FileJournalLogEntry__4: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 4
+      name: W3__Log error_1
+      comments: ''
+      file: "<%=File.basename(File_path)%>"
+      file_path: "<%=File_path%>"
+      package: "<%=File.nakedname(File_path)%>"
+      step_name: ''
+      processing_status: Failed
+      event: Error in workflow
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 
+      new_package: 
+      milestone: 
+  FileJournalLogEntry__5: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 5
+      name: W3__Log media process complete
+      comments: ''
+      file: "<%=File.basename(File_path)%>"
+      file_path: "<%=File_path%>"
+      package: "<%=File.nakedname(File_path)%>"
+      step_name: Delete
+      processing_status: Complete
+      event: Done
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 100
+  FileJournalLogEntry__6: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 6
+      name: W3__Log parsed
+      comments: ''
+      file: "<%=File.basename(xml_file_path)%>"
+      file_path: "<%=xml_file_path%>"
+      package: ''
+      step_name: ''
+      processing_status: ''
+      event: Transcoding request detected
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 20
+  FileJournalLogEntry__7: !ruby/object:FileJournalLogEntry
+    attributes:
+      id: 7
+      name: W3__Log xml process complete
+      comments: ''
+      file: "<%=File.basename(xml_file_path)%>"
+      file_path: "<%=xml_file_path%>"
+      package: "<%=File.nakedname(xml_file_path)%>"
+      step_name: ''
+      processing_status: Complete
+      event: Transcoding request completed
+      processing_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      journal_book: journal
+      new_file: 0
+      new_package: 0
+      milestone: 100
+  ScpTransfer__1: !ruby/object:ScpTransfer
+    attributes:
+      remote_node: localhost
+      id: 1
+      name: W3__Transfer Hi-Res file_1
+      comments: ''
+      operation: upload
+      remote_address: ''
+      remote_port: ''
+      remote_user: ''
+      remote_password: ''
+      remote_key_location: ''
+      local_path: "<%=media_file_path%>"
+      remote_path: ''
+      remove_source_file: 
+      base: 
+      preserve_timestamps: 0
+      recursive: 0
+      reporting_increment: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+  ScpTransfer__2: !ruby/object:ScpTransfer
+    attributes:
+      remote_node: localhost
+      id: 2
+      name: W3__Transfer Proxy file_1
+      comments: ''
+      operation: upload
+      remote_address: ''
+      remote_port: ''
+      remote_user: ''
+      remote_password: ''
+      remote_key_location: ''
+      local_path: ''
+      remote_path: ''
+      remove_source_file: 
+      base: 
+      preserve_timestamps: 0
+      recursive: 0
+      reporting_increment: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+  ScpTransfer__3: !ruby/object:ScpTransfer
+    attributes:
+      remote_node: localhost
+      id: 3
+      name: W3__Transfer Metadata_1
+      comments: ''
+      operation: upload
+      remote_address: ''
+      remote_port: ''
+      remote_user: ''
+      remote_password: ''
+      remote_key_location: ''
+      local_path: ''
+      remote_path: ''
+      remove_source_file: 
+      base: 
+      preserve_timestamps: 0
+      recursive: 0
+      reporting_increment: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+  ConvertPath__1: !ruby/object:ConvertPath
+    attributes:
+      id: 1
+      name: W3__path conversion_1
+      comments: ''
+      file_path: "<%= filepath %>"
+      input_mount_point: "<%= File.dirname(filepath) %>"
+      output_mount_point: http://<%=local_address%>/video/
+      array_mode: 0
+  EmailNotification__1: !ruby/object:EmailNotification
+    attributes:
+      id: 1
+      name: W3__Failure notification_1
+      comments: Sends a notification email in case of failure managing an ingestion
+      template: |+
+        An ingestion as been detected but cannot be processed.<br/>
+        Source: <%=source%>.<br/>
+        Profile: <%=profile%><br/>
+        Target: <%=target%><br/>
+        The original files are still available in the ingest server:<br/>
+        <%=xml_file_path%><br/>
+        <%=asset_file_path%></br>
+        <br/>
+        <br/>
+        Regards,
+          The Orchestrator team.
+
+      payload: "<MessageDefinition>     <Destinations><To><%=To%></To></Destinations>
+        \    <Subject>Failure for ingestion <%=File.nakedname(xml_file_path)%></Subject>
+        \    <Message></Message> </MessageDefinition> "
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      mailer_name: ''
+      attachment_list: 
+      subject_line: 
+      destinations: 
+      reply_to: 
+      from_name: 
+      from_address: 
+      use_payload: 1
+      only_accept_full_email_address: 0
+  EmailNotification__2: !ruby/object:EmailNotification
+    attributes:
+      id: 2
+      name: W3__confirm delivery_1
+      comments: ''
+      template: |-
+        The transcoding, encryption and delivery of package <%=File.nakedname(file_path)%> has been completed.<br/>
+        <br/>
+        The Orchestrator team.<br/>
+      payload: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      mailer_name: ''
+      attachment_list: 
+      subject_line: Vod Manager - <%=File.nakedname(file_path)%> Complete
+      destinations: ''
+      reply_to: 
+      from_name: 
+      from_address: 
+      use_payload: 0
+      only_accept_full_email_address: 0
+  SymantecPgp__1: !ruby/object:SymantecPgp
+    attributes:
+      execution_node: localhost
+      id: 1
+      name: W3__Encrypt Hi-Res_1
+      comments: ''
+      source_file_path: "<%=media_file_path%>"
+      passphrase: aspera
+      operation: encrypt
+      target_file_path: "<%=media_file_path%>.pgp"
+      execution_login: ''
+      execution_password: ''
+      script_timeout: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      pgp_binary_path: ''
+      options: "--batch --yes"
+      gpg_mode: 1
+  LocalFileOperation__2: !ruby/object:LocalFileOperation
+    attributes:
+      id: 2
+      name: W3__Delete temp files
+      comments: ''
+      operation: delete
+      sources: ''
+      target: ''
+      overwrite_flag: 0
+      base: ''
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      preserve_timestamp: 0
+      fail_on_incomplete: 1
+      block_size: 
+      chmod: ''
+      uid: ''
+      guid: ''
+      recursive: 0
+      expose_explicit_failed_list: 0
+      is_hard_link: 0
+      fail_on_empty: 0
+      validate_source: 0
+  LocalFileWatcher__2: !ruby/object:LocalFileWatcher
+    attributes:
+      id: 2
+      name: W3__Wait for media file_1
+      directory: ''
+      fileName: ''
+      baseDir: ''
+      use_regex_matching: 0
+      allowMultiple: 0
+      removeFile: 0
+      archiveDirectory: ''
+      archiveWithTimestamp: 0
+      readFile: 0
+      tempo: 
+      partial_file: 0
+      return_all: 0
+      run_synchronous: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      trigger_type: none
+      polling_frequency: 5
+      comments: Watch for '' in 'nil'
+      ignore_zero_bytes: 0
+      exclusions: ''
+      fullpath_exclusions: ''
+      ignore_readlocked: 0
+      multi_folders: 0
+      cool_off: 10
+      aggressive_pruning: 0
+      pruning_beacon_file_path: ''
+      keep_timestamps: 
+  SimpleParameterLookup__2: !ruby/object:SimpleParameterLookup
+    attributes:
+      id: 2
+      name: W3__Target folders_1
+      paramFileName: ''
+      parametersAssociations: |-
+        Target:::Media file final path:::Proxy file final path:::Metadata file final path
+        VOD Distrib:::/export/vod/hi-res:::/export/vod/proxy:::/export/vod/metadata
+        MOBILE Distrib:::/export/mobile/hi-res:::/export/mobile/proxy:::/export/mobile/metadata
+      mappingParameters: 
+      case_sensitive: 0
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      strip_spaces: 0
+      disable_glob: 0
+      disable_regex: 0
+      comments: ''
+      support_typed_outputs: 0
+  MergePoint__1: !ruby/object:MergePoint
+    attributes:
+      id: 1
+      name: W3__merge data_1
+      comments: ''
+      mandatoryInputs: 
+      optionalInputs: 
+      created_at: 2020-06-11 05:33:07.000000000 Z
+      updated_at: 2020-06-11 05:33:07.000000000 Z
+      merged_inputs: "{'final_metadata_file_path'=>['','','string','required'], 'profile'=>['','','string','required'],
+        'final_proxy_file_path'=>['','','string','required'], 'final_media_file_path'=>['','','string','required'],
+        'source'=>['','','string','required'], 'target'=>['','','string','required']}"
+      multi_inputs: 
+      consider_blank_nil: 1
+  SubWorkflow__2: !ruby/object:SubWorkflow
+    attributes:
+      workflow_id: 2
+      workflow_portable_id: 73498fb0-6e93-0134-a30b-063966335dd0
+      id: 2
+      workflowOutputs: "{'transcoded_file_path'=>'Compute target path:target_file_path',
+        'proxy_file_path'=>'Compute target path:proxy_file_path'}"
+      workflowInputs: ''
+      comments: ''
+      created_at: 2020-06-11 05:33:08.000000000 Z
+      updated_at: 2020-06-11 05:33:08.000000000 Z
+      name: W3__Asset transcoding_1
+      exit_status_for_errors: Failed
+      use_true_name: 0
+      use_workorder_status: 0
+      execution_priority: 
+  UserInput__1: !ruby/object:UserInput
+    attributes:
+      id: 1
+      name: user input task template
+      event_description: Invalid target for <%=File.nakedname(media_file_path)%>
+      comments: ''
+      viewTemplate: _user_task_demo.html.erb
+      mandatoryInputs: "{'profile'=>'string', 'media_file_path'=>'string', 'target'=>'string',
+        'source'=>'string'}"
+      optionalInputs: ''
+      userOutputs: "{'final_media_path'=>'string', 'target_out'=>'string', 'final_metadata_path'=>'string',
+        'final_proxy_path'=>'string', 'source_out'=>'string', 'profile_out'=>'string',
+        'description'=>'string', 'date_start'=>'string', 'date_stop'=>'string', 'rejected'=>'string'}"
+      assigned_roles: 1, 5
+      assigned_users: ''
+      created_at: 2020-06-11 05:33:08.000000000 Z
+      updated_at: 2020-06-11 05:33:08.000000000 Z
+      keep_ongoing: 0
+      direct_url: 
+      email_notification: 0
+      email_subject: ''
+      email_body: ''
+      email_from_address: 
+      email_additional_to_addresses: ''
+      email_additional_cc_addresses: ''
+      email_additional_bcc_addresses: ''
+      mailer_name: ''
+      required_requested_data: "{}"
+      assigned_user_logins: admin
+      assigned_roles_logins: Administrator, Contributor
+      expose_user_information: 0
+  RemoteFileOperation__1: !ruby/object:RemoteFileOperation
+    attributes:
+      remote_node: ''
+      id: 1
+      name: W3__Delete xml on transfer server
+      comments: ''
+      operation: delete
+      source: ''
+      target: ''
+      remote_node_user: 
+      remote_node_password: 
+      base: ''
+      created_at: 2020-06-11 05:33:08.000000000 Z
+      updated_at: 2020-06-11 05:33:08.000000000 Z
+      force_overwrite: 0
+- CustomRuby__5: []
+  CustomRuby__7: []
+  Filter__2: []
+  FileJournalLogEntry__1: []
+  FileJournalLogEntry__2: []
+  FileJournalLogEntry__3: []
+  FileJournalLogEntry__4: []
+  FileJournalLogEntry__5: []
+  FileJournalLogEntry__6: []
+  FileJournalLogEntry__7: []
+  ScpTransfer__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost
+    :dependent_field: remote_node
+  ScpTransfer__2:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost
+    :dependent_field: remote_node
+  ScpTransfer__3:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost
+    :dependent_field: remote_node
+  ConvertPath__1: []
+  EmailNotification__1: []
+  EmailNotification__2: []
+  SymantecPgp__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost
+    :dependent_field: execution_node
+  LocalFileOperation__2: []
+  LocalFileWatcher__2: []
+  SimpleParameterLookup__2: []
+  MergePoint__1: []
+  SubWorkflow__2:
+  - :entity: Workflow
+    :id_key: id
+    :id_value: 2
+    :dependent_field: workflow_id
+  - :entity: Workflow
+    :id_key: portable_id
+    :id_value: 73498fb0-6e93-0134-a30b-063966335dd0
+    :dependent_field: workflow_portable_id
+  UserInput__1: []
+  RemoteFileOperation__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: ''
+    :dependent_field: remote_node
+- RemoteNode__name__localhost: "/tmp/Incoming asset processing/20200615_002432/Remote_nodelocalhost.node"
+  Workflow__id__2: "/tmp/Incoming asset processing/20200615_002432/Workflow_Asset
+    transcoding with FFMPEG and load manager.wkf"
+  RemoteNode__name__: []
+- CustomRuby: 0.6.1
+  Filter: 0.2.8
+  FileJournalLogEntry: 0.2.2
+  ScpTransfer: 0.1.1
+  ConvertPath: 0.1.2
+  EmailNotification: 0.5.6
+  SymantecPgp: 0.3.2
+  LocalFileOperation: 1.0.3
+  LocalFileWatcher: 1.8.1
+  SimpleParameterLookup: 0.5.8
+  MergePoint: 0.4.0
+  SubWorkflow: 1.4.2
+  UserInput: 0.7.0
+  RemoteFileOperation: 0.2.8

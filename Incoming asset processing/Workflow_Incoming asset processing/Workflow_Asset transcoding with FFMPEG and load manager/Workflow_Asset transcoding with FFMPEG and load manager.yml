@@ -1,0 +1,570 @@
+---
+- !ruby/object:Workflow
+  attributes:
+    portable_id: 73498fb0-6e93-0134-a30b-063966335dd0
+    generatedFrom: 10
+    name: Asset transcoding with FFMPEG and load manager
+    id: 2
+    comments: Imported from file /opt/aspera/var/run/orchestrator/workflows/import/Workflow_Incoming_asset_processing__3326/20200611_073228/Workflow_Asset_transcoding_with_FFMPEG_and_load_manager__3692.wkf
+    revision_id: 17
+    created_by: 1
+    run_as: SYSTEM
+    created_at: 2020-06-11 05:33:03.000000000 Z
+    updated_at: 2020-06-11 05:33:04.000000000 Z
+    folder_id: 0
+    description: 
+    max_running: 
+    purge_after_days: 
+    cleanup_after_days: 
+    tags: 
+    label: 
+    source_revision: Asset transcoding with FFMPEG and load manager|17
+    templates: 
+    user_lock: 
+    locked_by: 
+- !ruby/object:Whiteboard
+  attributes:
+    xml_export: |
+      <opt id="2">
+        <Start x="19" y="19" id="fce597fa-6e07-9d55-1d2f-ec626c1e4229">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+          <Parameters></Parameters>
+        </Start>
+        <Error x="1079" y="269" id="66391b47-992d-05d4-8969-29cbbfdf23ca">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites></Prerequisites>
+        </Error>
+        <End x="1069" y="159" id="310e47c2-a65d-c0ea-29f9-0e5998740a50">
+          <Synch_factor>0</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="8ec2cc4e-cfb1-7bd0-9452-4302541288d0" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </End>
+        <Fail x="1079" y="369" id="15e9b52c-8074-28c0-d983-364360e5ec3b">
+          <Synch_factor x="999" y="379">1</Synch_factor>
+          <Prerequisites>
+            <Prerequisite id="bf42452d-5080-169c-b7d2-f4c3e060294b" status="Failed" router="draw2d.ManhattanConnectionRouter" />
+            <Prerequisite id="bf42452d-5080-169c-b7d2-f4c3e060294b" status="Error" router="draw2d.ManhattanConnectionRouter" />
+            <Prerequisite id="e3bb3240-9c62-747d-f9da-8fb996b95afa" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+          </Prerequisites>
+        </Fail>
+        <Steps>
+          <Step x="839" y="149" id="8ec2cc4e-cfb1-7bd0-9452-4302541288d0">
+            <Action_id>1</Action_id>
+            <Step_name>Release FFMPEG transcoder</Step_name>
+            <Step_type>LoadManager</Step_type>
+            <Version>0.3.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="c43be8dc-7197-f80a-b229-77f1f19486bd" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Allocation_token_to_release">
+                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Capacity_released" />
+              <Output name="Resource_reserved" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="501" y="11" id="da8a6907-f4f2-c7e5-a7de-692a779ec2b0">
+            <Action_id>1</Action_id>
+            <Step_name>Add to FFMpeg queue</Step_name>
+            <Step_type>QueueStager</Step_type>
+            <Version>0.7.2</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="1e76368e-c92c-6446-467a-332531b41af4" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="file_path">
+                <Map_to type="parameter" name="media_file_path" />
+              </Input>
+              <Input name="Priority">
+                <Map_to type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+                <Processing>input_value=input_value.to_i</Processing>
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Queued_item" />
+              <Output name="Queued_item_description" />
+              <Output name="Queue_ID" />
+              <Output name="Step_information" />
+              <Output name="Item_id" />
+              <Carry_thru type="parameter" name="media_file_path" />
+              <Carry_thru type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="output" name="file_size" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="679" y="149" id="c43be8dc-7197-f80a-b229-77f1f19486bd">
+            <Action_id>1</Action_id>
+            <Step_name>create proxy</Step_name>
+            <Step_type>FfmpgTranscoding</Step_type>
+            <Timeout>0</Timeout>
+            <Version>0.4.3</Version>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>86400</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>86400</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="71a6a6dc-ccd0-810d-2401-40611d3a7e04" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Input_file_path">
+                <Map_to type="parameter" name="media_file_path" />
+              </Input>
+              <Input name="Output_file_path">
+                <Map_to type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="transformation_report" />
+              <Output name="Result_file_path" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="129" y="9" id="bf42452d-5080-169c-b7d2-f4c3e060294b">
+            <Action_id>1</Action_id>
+            <Step_name>Transcoding profile</Step_name>
+            <Step_type>SimpleParameterLookup</Step_type>
+            <Version>{}</Version>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>86400</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>86400</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="fce597fa-6e07-9d55-1d2f-ec626c1e4229" status="true" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters>
+              <Parameter id="1cb07657-6352-9f83-b23d-0356516e1bdb" router="draw2d.ManhattanConnectionRouter" />
+            </Parameters>
+            <Inputs>
+              <Input name="Profile">
+                <Map_to type="parameter" name="profile" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Profile" />
+              <Output name="ColumnValues" />
+              <Output name="FFMPEG Options" />
+              <Output name="Priority_as_string" />
+              <Output name="IndexedTable" />
+              <Output name="Target Extension" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="519" y="149" id="71a6a6dc-ccd0-810d-2401-40611d3a7e04">
+            <Action_id>2</Action_id>
+            <Step_name>Transcode</Step_name>
+            <Step_type>FfmpgTranscoding</Step_type>
+            <Timeout>0</Timeout>
+            <Version>0.4.3</Version>
+            <Failed_attempts>1</Failed_attempts>
+            <Failed_retryFor>0</Failed_retryFor>
+            <Failed_retryForUnit>86400</Failed_retryForUnit>
+            <Failed_retryDelay>0</Failed_retryDelay>
+            <Error_attempts>1</Error_attempts>
+            <Error_retryFor>0</Error_retryFor>
+            <Error_retryForUnit>86400</Error_retryForUnit>
+            <Error_retryDelay>0</Error_retryDelay>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="1a190462-ee8f-09c4-b22b-0653d00de43b" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Input_file_path">
+                <Map_to type="parameter" name="media_file_path" />
+              </Input>
+              <Input name="Output_file_path">
+                <Map_to type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              </Input>
+              <Input name="Options">
+                <Map_to type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="transformation_report" />
+              <Output name="Result_file_path" />
+              <Output name="Step_information" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="parameter" name="media_file_path" />
+              <Carry_thru type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="839" y="289" id="e3bb3240-9c62-747d-f9da-8fb996b95afa">
+            <Action_id>2</Action_id>
+            <Step_name>Release if errors</Step_name>
+            <Step_type>LoadManager</Step_type>
+            <Version>{}</Version>
+            <Synch_factor x="739" y="309">1</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="71a6a6dc-ccd0-810d-2401-40611d3a7e04" status="Failed" router="draw2d.ManhattanConnectionRouter" />
+              <Prerequisite id="71a6a6dc-ccd0-810d-2401-40611d3a7e04" status="Error" router="draw2d.ManhattanConnectionRouter" />
+              <Prerequisite id="c43be8dc-7197-f80a-b229-77f1f19486bd" status="Failed" router="draw2d.ManhattanConnectionRouter" />
+              <Prerequisite id="c43be8dc-7197-f80a-b229-77f1f19486bd" status="Error" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Allocation_token_to_release">
+                <Map_to type="output" name="Allocation_token" step_type="LoadManager" action_id="3" step_name="Wait for FFMPEG transcoder" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Capacity_released" />
+              <Output name="Resource_reserved" />
+              <Output name="Step_information" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="301" y="11" id="1e76368e-c92c-6446-467a-332531b41af4">
+            <Action_id>3</Action_id>
+            <Step_name>Compute target path</Step_name>
+            <Step_type>CustomRuby</Step_type>
+            <Version>{}</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="bf42452d-5080-169c-b7d2-f4c3e060294b" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters>
+              <Parameter id="a71da852-5d09-8e07-3895-489949c4c5cb" router="draw2d.ManhattanConnectionRouter" />
+            </Parameters>
+            <Inputs>
+              <Input name="media_file_path">
+                <Map_to type="parameter" name="media_file_path" />
+              </Input>
+              <Input name="target_extension">
+                <Map_to type="output" name="Target Extension" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="target_file_path" />
+              <Output name="proxy_file_path" />
+              <Output name="file_size" />
+              <Output name="Step_information" />
+              <Carry_thru type="parameter" name="media_file_path" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              <Carry_thru type="output" name="Priority_as_string" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+          <Step x="739" y="9" id="1a190462-ee8f-09c4-b22b-0653d00de43b">
+            <Action_id>3</Action_id>
+            <Step_name>Wait for FFMPEG transcoder</Step_name>
+            <Step_type>LoadManager</Step_type>
+            <Version>0.3.0</Version>
+            <Synch_factor>0</Synch_factor>
+            <Prerequisites>
+              <Prerequisite id="da8a6907-f4f2-c7e5-a7de-692a779ec2b0" status="Complete" router="draw2d.ManhattanConnectionRouter" />
+            </Prerequisites>
+            <Parameters></Parameters>
+            <Inputs>
+              <Input name="Expected_queued_item">
+                <Map_to type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              </Input>
+            </Inputs>
+            <Outputs>
+              <Output name="Capacity_reserved" />
+              <Output name="Queued_item" />
+              <Output name="Allocation_token" />
+              <Output name="Resource_reserved" />
+              <Output name="Step_information" />
+              <Output name="Queued_item_description" />
+              <Carry_thru type="output" name="FFMPEG Options" step_type="SimpleParameterLookup" action_id="1" step_name="Transcoding profile" />
+              <Carry_thru type="parameter" name="media_file_path" />
+              <Carry_thru type="output" name="Queue_ID" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queued_item" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Queued_item_description" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="Step_information" step_type="QueueStager" action_id="1" step_name="Add to FFMpeg queue" />
+              <Carry_thru type="output" name="file_size" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="output" name="proxy_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+              <Carry_thru type="output" name="target_file_path" step_type="CustomRuby" action_id="3" step_name="Compute target path" />
+            </Outputs>
+            <comments>--- {}
+
+      </comments>
+            <weight>0</weight>
+          </Step>
+        </Steps>
+        <Parameters>
+          <Parameter x="29" y="149" id="1cb07657-6352-9f83-b23d-0356516e1bdb">
+            <Value>undefined</Value>
+            <Value_type>string</Value_type>
+            <Name>profile</Name>
+            <Runtime_override>true</Runtime_override>
+            <Runtime_optional>false</Runtime_optional>
+            <Comments>{}</Comments>
+          </Parameter>
+          <Parameter x="199" y="149" id="a71da852-5d09-8e07-3895-489949c4c5cb">
+            <Value>undefined</Value>
+            <Value_type>string</Value_type>
+            <Name>media_file_path</Name>
+            <Runtime_override>true</Runtime_override>
+            <Runtime_optional>false</Runtime_optional>
+            <Comments>{}</Comments>
+          </Parameter>
+        </Parameters>
+        <Notes></Notes>
+      </opt>
+    id: 10
+    workflow_id: 2
+    error_free: 1
+    created_by: 1
+    revision_id: 17
+    created_at: 2020-06-11 05:33:03.000000000 Z
+    updated_at: 2020-06-11 05:33:03.000000000 Z
+    revisions_log: 
+- LoadManager__1: !ruby/object:LoadManager
+    attributes:
+      id: 1
+      name: W2__Release FFMPEG transcoder
+      comments: ''
+      max_resources: 
+      resource_capacity: 
+      resource_list: ''
+      allocation_block: 
+      unique_id: ''
+      unicity_type: absolute
+      polling_frequency: 
+      keep_ongoing: 0
+      resource_wait_timeout: 
+      resource_hold_timeout: 
+      queue_id: ''
+      use_weight_for_allocation: 0
+      on_wait_timeout: Fail
+      manager_action: Release
+      allocation_label: ''
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      is_adhoc: 1
+      pool_name: ''
+      allocation_policy: 
+  LoadManager__2: !ruby/object:LoadManager
+    attributes:
+      id: 2
+      name: W2__Release if errors
+      comments: ''
+      max_resources: 
+      resource_capacity: 
+      resource_list: ''
+      allocation_block: 
+      unique_id: ''
+      unicity_type: absolute
+      polling_frequency: 
+      keep_ongoing: 0
+      resource_wait_timeout: 
+      resource_hold_timeout: 
+      queue_id: ''
+      use_weight_for_allocation: 0
+      on_wait_timeout: Fail
+      manager_action: Release
+      allocation_label: ''
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      is_adhoc: 1
+      pool_name: 
+      allocation_policy: 
+  LoadManager__3: !ruby/object:LoadManager
+    attributes:
+      id: 3
+      name: W2__Wait for FFMPEG transcoder
+      comments: ''
+      max_resources: 2
+      resource_capacity: 3
+      resource_list: ''
+      allocation_block: 
+      unique_id: ffmpeg transcoder
+      unicity_type: absolute
+      polling_frequency: 
+      keep_ongoing: 0
+      resource_wait_timeout: 
+      resource_hold_timeout: 
+      queue_id: ffmpeg_transcoding_queue
+      use_weight_for_allocation: 0
+      on_wait_timeout: Fail
+      manager_action: Reserve
+      allocation_label: ''
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      is_adhoc: 1
+      pool_name: ''
+      allocation_policy: 
+  QueueStager__1: !ruby/object:QueueStager
+    attributes:
+      id: 1
+      name: W2__Add to FFMpeg queue
+      comments: ''
+      queue_name: ffmpeg_transcoding_queue
+      queued_item: "<%=file_path%>"
+      item_description: Transcoding task for <%=File.basename(file_path)%>
+      priority: 
+      users: ''
+      groups: 6, 1
+      polling_frequency: 
+      adhoc_queue: 0
+      operation: Add
+      keep_ongoing: 0
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      weight: 0
+      lifetime: WorkOrder
+      max_item_count: 
+      omit_description: 0
+  FfmpgTranscoding__1: !ruby/object:FfmpgTranscoding
+    attributes:
+      execution_node: localhost_new_20200610223301
+      id: 1
+      name: W2__create proxy
+      comments: Creates a low res version of the incoming media file to use as proxy.
+      execution_login: 
+      execution_password: 
+      binary_path: ffmpeg
+      input_file_path: ''
+      output_file_path: ''
+      force_file_format: 
+      options: "-r 25 -s 640X480 -y -strict experimental"
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      overwrite_output: 0
+      post_path_parameters: ''
+      is_manual_command: 0
+      manual_command: ''
+      execution_on_windoz: 
+  FfmpgTranscoding__2: !ruby/object:FfmpgTranscoding
+    attributes:
+      execution_node: localhost_new_20200610223301
+      id: 2
+      name: W2__Transcode
+      comments: ''
+      execution_login: 
+      execution_password: 
+      binary_path: ffmpeg
+      input_file_path: ''
+      output_file_path: ''
+      force_file_format: 
+      options: ''
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      overwrite_output: 0
+      post_path_parameters: ''
+      is_manual_command: 0
+      manual_command: ''
+      execution_on_windoz: 
+  SimpleParameterLookup__1: !ruby/object:SimpleParameterLookup
+    attributes:
+      id: 1
+      name: ffmpeg transcoding profile
+      paramFileName: ''
+      parametersAssociations: |-
+        Profile:::FFMPEG Options:::Target Extension:::Priority_as_string
+        XDCAM HD422:::-y -target pal-dvd -ps 2000000000 -aspect 16:9:::avi:::10
+        MPEG2:::-s 1980X1240 -strict experimental -y:::mp4:::40
+        MP4:::-s 1980X1240 -strict experimental -y:::mp4:::50
+        mP5:::aaa:::ddd:::ttt
+        zzz:::qqq:::sss:::dddd
+      mappingParameters: 
+      case_sensitive: 0
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      strip_spaces: 0
+      disable_glob: 0
+      disable_regex: 0
+      comments: ''
+      support_typed_outputs: 0
+  CustomRuby__3: !ruby/object:CustomRuby
+    attributes:
+      id: 3
+      name: ffmpeg compute target path_1
+      comments: Computes the target paths for the FFMPEG transcoding process.
+      execute_code: |-
+        media_file_path = inputs['media_file_path']
+        outputs['file_size']=File.size(media_file_path)/(1024*1024)
+        target_extension = inputs['target_extension']
+        outputs['target_file_path'] = File.join("/tmp/" + File.nakedname(media_file_path) + "." + target_extension)
+        outputs['proxy_file_path'] = File.join("/tmp/" + File.nakedname(media_file_path) + "-proxy." + target_extension)
+      validateInputs_code: ''
+      outputsSpec_code: ''
+      inputsSpec_code: ''
+      created_at: 2020-06-11 05:33:03.000000000 Z
+      updated_at: 2020-06-11 05:33:03.000000000 Z
+      mandatoryInputs: "{'media_file_path'=>'string', 'target_extension'=>'string'}"
+      optionalInputs: ''
+      typedOutputs: "{'proxy_file_path'=>'string', 'target_file_path'=>'string', 'file_size'=>'int'}"
+      use_code_from_github: 
+      github_token: 
+      github_repo: 
+      github_file_path: 
+      github_branch_name: 
+      github_user_name: 
+      github_hostname: 
+      verify_ssl: 1
+      use_cached: 0
+- LoadManager__1: []
+  LoadManager__2: []
+  LoadManager__3: []
+  QueueStager__1: []
+  FfmpgTranscoding__1:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost_new_20200610223301
+    :dependent_field: execution_node
+  FfmpgTranscoding__2:
+  - :entity: RemoteNode
+    :id_key: name
+    :id_value: localhost_new_20200610223301
+    :dependent_field: execution_node
+  SimpleParameterLookup__1: []
+  CustomRuby__3: []
+- RemoteNode__name__localhost_new_20200610223301: "/tmp/Incoming asset processing/20200615_002432/20200615_002432/Remote_nodelocalhost_new_20200610223301.node"
+- LoadManager: 0.4.4
+  QueueStager: 0.7.2
+  FfmpgTranscoding: 0.5.0
+  SimpleParameterLookup: 0.5.8
+  CustomRuby: 0.6.1
