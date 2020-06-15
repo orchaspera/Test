@@ -694,8 +694,8 @@
     :id_key: name
     :id_value: ''
     :dependent_field: remote_node
-- RemoteNode__name__localhost: "/tmp/Incoming asset processing/20200615_022804/Remote_nodelocalhost.node"
-  Workflow__id__3: "/tmp/Incoming asset processing/20200615_022804/Workflow_Asset
+- RemoteNode__name__localhost: "/tmp/Incoming asset processing/20200615_023115/Remote_nodelocalhost.node"
+  Workflow__id__3: "/tmp/Incoming asset processing/20200615_023115/Workflow_Asset
     transcoding with FFMPEG and load manager.wkf"
   RemoteNode__name__: []
 - CustomRuby: 0.6.1
