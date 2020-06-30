@@ -1,0 +1,32 @@
+---
+- !ruby/object:RemoteNode
+  attributes:
+    name: node5intlab
+    id: 5
+    comments: Node imported successfully.
+    address: 10.0.71.55
+    port: 22
+    login: root
+    password: "~p:p446PxEzYAqzfO4dQ+nSZQ==\n"
+    certificate_location: ''
+    aspera_dir: 
+    orchestrator_dir: 
+    ruby_executable: 
+    os: linux
+    platform: 'Linux 2.6.32-504.8.1.el6.x86_64 #1 SMP Wed Jan 28 21:11:36 UTC 2015
+      x86_64 x86_64 x86_64 GNU/Linux'
+    plugin_execution: 
+    created_at: 2018-05-07 23:07:59.000000000 Z
+    updated_at: 2018-05-07 23:23:13.000000000 Z
+    secondary_address: ''
+    ports_to_scan: ''
+    displayed_name: node5Intlab
+    node_type: Aspera FASP
+    fasp_port: 
+    balancing_type: ''
+    keepalive_port: 
+    round_robiner: 0
+    node_attributes: "--- {}\n\n"
+    orch_login: ''
+    orch_api_key: ''
+    orch_web_root: aspera/orchestrator/
